@@ -4,7 +4,7 @@ const Card = () => {
   return (
     <DivCard>
       <>
-        {/* AQUI VAI AS INFORMAÇÕES VINDAS DA API */}
+        {/* AQUI VAI O COMPONENTE COM AS INFORMAÇÕES VINDAS DA API */}
         <p>Oi</p>
       </>
     </DivCard>

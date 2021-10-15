@@ -10,4 +10,9 @@ export const DivCardAdd = styled.div`
     background-color: var(--color-purple-card);
     border-radius: 5px;
     color: var(--color-text-primary);
+
+    span{
+        font-size: 33px;
+    }
+    
 `

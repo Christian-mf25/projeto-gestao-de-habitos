@@ -4,12 +4,10 @@ import CardAdd from "./Components/CardAdd";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <GlobalStyles />
-      <header>
-        <CardAdd />
-        <Card />
-      </header>
+      <CardAdd />
+      <Card />
     </div>
   );
 }
