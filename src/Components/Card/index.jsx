@@ -1,5 +1,6 @@
 import { DivCard } from "./style";
 
+// COMPONENTE PARA RENDERIZAR CADA CARD DOS HABITS / GROUPS / SEARCH-GROUPS
 const Card = () => {
   return (
     <DivCard>
