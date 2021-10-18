@@ -1,5 +1,5 @@
-import { toast } from 'react-toastify';
-import Api from '../../Services/API';
+import { toast } from "react-toastify";
+import Api from "../../Services/API";
 
 const Habits = ({ personalHabits }) => {
   const achieved = personalHabits.filter((item) => item.achieved === true);
@@ -12,7 +12,7 @@ const Habits = ({ personalHabits }) => {
         // Authorization: `Bearer ${token}`
       },
     }).then(() => {
-      toast.success('Hábito editado');
+      toast.success("Hábito editado");
     });
   };
 
@@ -22,7 +22,7 @@ const Habits = ({ personalHabits }) => {
         // Authorization: `Bearer ${token}`
       },
     }).then(() => {
-      toast.success('Hábito removido');
+      toast.success("Hábito removido");
     });
   };
 

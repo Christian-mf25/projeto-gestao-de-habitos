@@ -1,13 +1,12 @@
-import 'react-toastify/dist/ReactToastify.css'
+import "react-toastify/dist/ReactToastify.css";
 import { GlobalStyles } from "./Styles/global";
-import {ToastContainer} from "react-toastify"
-import Habits from './Components/Habits';
+import { ToastContainer } from "react-toastify";
+import Habits from "./Components/Habits";
 import Routes from "./Routes";
 
 function App() {
   return (
     <div className="App">
-      <Routes />
       <ToastContainer
         position="top-right"
         autoClose={2500}
@@ -20,7 +19,7 @@ function App() {
         pauseOnHover
       />
       <GlobalStyles />
-      <Routes/>
+      <Routes />
     </div>
   );
 }
