@@ -1,10 +1,10 @@
+import SearchGroups from "../Pages/SearchGroups/index";
 import React from "react";
-import { Route, Switch} from "react-router";
 import Home from "../Pages/Home/index";
+import { Route, Switch} from "react-router";
 import Register from "../Pages/Register/index";
 import Login from "../Pages/Login/index";
 import Dashboard from "../Pages/Dashboard/index";
-import SearchGroups from "../Pages/SearchGroups/index";
 import MyGroups from "../Pages/MyGroups/index";
 
 const Routes = () => {
