@@ -6,12 +6,23 @@ const Habits = ({ habitsRes }) => {
   const notAchieved = habitsRes.filter((item) => item.achieved === false);
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
-  const checkIn = (id) => {
-    Api.patch(`habits/${id}/`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+  const checkIn = (item) => {
+    console.log(item);
+    Api.patch(
+      `habits/${item.id}/`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    }).then(() => {
+      {
+        how_much_achieved: item.how_much_achieved + 10,
+        achieved: false,
+      }
+    ).then(() => {
       toast.success("Hábito editado");
     });
   };
@@ -23,6 +34,7 @@ const Habits = ({ habitsRes }) => {
       },
     }).then(() => {
       toast.success("Hábito removido");
+      window.location.reload();
     });
   };
 
@@ -32,10 +44,10 @@ const Habits = ({ habitsRes }) => {
       {notAchieved.map((item) => (
         <div key={item.id}>
           <p>Nome: {item.title}</p>
-          <p>Categoria:{item.category}</p>
+          <p>Categoria: {item.category}</p>
           <p>Frequencia: {item.frequency}</p>
           <p>Alcançado: {item.how_much_achieved}</p>
-          <button onClick={() => checkIn(item.id)}>Check-in</button>
+          <button onClick={() => checkIn(item)}>Check-in</button>
           <button onClick={() => deleteHabit(item.id)}>Deletar</button>
         </div>
       ))}
