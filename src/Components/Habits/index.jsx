@@ -1,15 +1,15 @@
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
 
-const Habits = ({ personalHabits }) => {
-  const achieved = personalHabits.filter((item) => item.achieved === true);
-  const notAchieved = personalHabits.filter((item) => item.achieved === false);
-  //   const token =
+const Habits = ({ habitsRes }) => {
+  const achieved = habitsRes.filter((item) => item.achieved === true);
+  const notAchieved = habitsRes.filter((item) => item.achieved === false);
+  const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
   const checkIn = (id) => {
-    Api.patch(`habits/${id}`, {
+    Api.patch(`habits/${id}/`, {
       headers: {
-        // Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     }).then(() => {
       toast.success("Hábito editado");
@@ -17,9 +17,9 @@ const Habits = ({ personalHabits }) => {
   };
 
   const deleteHabit = (id) => {
-    Api.delete(`habits/${id}`, {
+    Api.delete(`habits/${id}/`, {
       headers: {
-        // Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     }).then(() => {
       toast.success("Hábito removido");
