@@ -2,7 +2,6 @@ import Header from "../../Components/Header";
 import { GroupsContext } from "../../Providers/Groups/groups";
 import {useContext} from "react";
 
-
 const SearchGroups = () => {
     const {data} = useContext(GroupsContext);
 
