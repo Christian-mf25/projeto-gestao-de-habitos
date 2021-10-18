@@ -1,26 +1,24 @@
-import Habits from './Components/Habits';
+import 'react-toastify/dist/ReactToastify.css'
 import { GlobalStyles } from "./Styles/global";
+import {ToastContainer} from "react-toastify"
+import Habits from './Components/Habits';
 import Routes from "./Routes";
-
 
 function App() {
   return (
     <div className="App">
-
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Habits />
-      </header>
+      <Routes />
+      <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <GlobalStyles />
       <Routes/>
     </div>
