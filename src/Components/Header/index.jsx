@@ -1,6 +1,5 @@
 import logoSelectNegativa from "../../assets/images/logo-select1-negativa.png";
 import { Toolbar } from "./styles";
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const Header = ({showD = false, showM = false, showS = false}) => {

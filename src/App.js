@@ -1,6 +1,6 @@
 import { GlobalStyles } from "./Styles/global";
 import Routes from "./Routes";
-import {GroupsProvider} from "./Providers/Groups/groups";
+import {GroupsProvider} from "./Providers/Groups";
 
 function App() {
   return (
