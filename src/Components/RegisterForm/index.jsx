@@ -2,9 +2,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import Api from "../../Services/API";
 import * as yup from "yup";
-import axios from "axios";
-import Register from "../../Pages/Register";
 
 const RegisterForm = () => {
   const history = useHistory();
@@ -39,8 +38,10 @@ const RegisterForm = () => {
   };
 
   const handleForm = (data) => {
-    axios
-      .post("https://kenzie-habits.herokuapp.com/users/", data)
+		const {username, email, password} = data
+		const newData = {username, email, password}
+    Api
+      .post("/users/", newData)
       .then((_) => {
         toast.success("account created successfully ");
         return sendToLogin();
@@ -80,8 +81,7 @@ const RegisterForm = () => {
 
       <p>Already has an account?</p>
 
-      <button
-			onClick={sendToLogin}>Login</button>
+      <button onClick={sendToLogin}>Login</button>
     </>
   );
 };
