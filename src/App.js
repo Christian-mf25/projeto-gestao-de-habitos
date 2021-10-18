@@ -1,13 +1,13 @@
-// import logo from './logo.svg';
-// import './App.css';
-
 import Habits from './Components/Habits';
+import { GlobalStyles } from "./Styles/global";
+import Routes from "./Routes";
+
 
 function App() {
   return (
     <div className="App">
+
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -21,6 +21,8 @@ function App() {
         </a>
         <Habits />
       </header>
+      <GlobalStyles />
+      <Routes/>
     </div>
   );
 }
