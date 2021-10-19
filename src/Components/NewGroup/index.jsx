@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 const NewGroup = () => {
   const [, /*selected*/ setSelected] = useState("");
+  const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
@@ -27,18 +28,16 @@ const NewGroup = () => {
   const submitFunction = ({ name, category, description }) => {
     const user = { name, category, description };
 
-    // const token = localStorage.getItem("token");
-
     Api.post(`groups/`, user, {
       headers: {
-        // Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     })
       .then(() => {
         toast.success("Grupo criado");
       })
       .catch((err) => {
-        console.log(err);
+        toast.error("Algo errado aconteceu");
       });
   };
 
