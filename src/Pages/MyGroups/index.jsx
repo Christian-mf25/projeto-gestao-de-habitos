@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useAuth } from "../../Providers/Auth";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Providers/Auth";
+import { GroupContext } from "../../Providers/Group";
 import { useHistory, Link } from "react-router-dom";
 import Group from "../../Components/Group";
 import { Dialog } from "@mui/material";
-import { useGroups } from "../../Providers/Groups";
 import * as C from "./styles.js";
 import NewGroup from "../../Components/NewGroup";
 import Api from "../../Services/API";
@@ -12,8 +12,8 @@ import { toast } from "react-toastify";
 const Groups = () => {
   const history = useHistory();
 
-  const { auth } = useAuth();
-  const { groups, setGroups } = useGroups();
+  const { auth } = useContext(AuthContext);
+  const { group, setGroup } = useContext(GroupContext);
   const [insertModal, setInsertModal] = useState(false);
 
   const token = localStorage.getItem("token");
@@ -22,7 +22,7 @@ const Groups = () => {
     Api.get("/groups/subscriptions/", {
       headers: { Authorization: `Bearer ${token}` },
     })
-      .then((response) => setGroups(response.data))
+      .then((response) => setGroup(response.data))
       .catch((_) => toast.error("Algo deu errado."));
   }, [insertModal]);
 
@@ -58,10 +58,10 @@ const Groups = () => {
           </div>
 
           <ul>
-            {groups?.map((group) => {
+            {group?.map((item) => {
               return (
-                <li key={group.id}>
-                  <Group group={group} />;
+                <li key={item.id}>
+                  <Group group={item} />;
                 </li>
               );
             })}

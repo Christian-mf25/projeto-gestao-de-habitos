@@ -1,6 +1,6 @@
 import { createContext, useState, useContext } from "react";
 
-const AuthContext = createContext();
+export const AuthContext = createContext([]);
 
 const initialToken = localStorage.getItem("token");
 
@@ -8,6 +8,7 @@ const initialState = initialToken ? true : false;
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(initialState);
+  console.log(auth);
 
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
@@ -17,3 +18,18 @@ export const AuthProvider = ({ children }) => {
 };
 
 export const useAuth = () => useContext(AuthContext);
+
+// export const GroupsContext = createContext([]);
+
+// export const GroupsProvider = ({ children }) => {
+//   const [data, setData] = useState([]);
+//   useEffect(() => {
+//     Api.get("groups/")
+//       .then((response) => setData(response.data.results))
+//       .catch((err) => console.log(err));
+//   });
+
+//   return (
+//     <GroupsContext.Provider value={{ data }}>{children}</GroupsContext.Provider>
+//   );
+// };
