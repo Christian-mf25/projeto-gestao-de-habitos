@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AddHabit from "../../Components/AddHabit";
 import Habits from "../../Components/Habits";
 import Api from "../../Services/API";
@@ -8,13 +8,22 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 import SearchHabit from "../../Components/SearchHabit";
+import { AuthContext } from "../../Providers/Auth";
+import { useHistory } from "react-router";
 
 const Dashboard = () => {
   const [habitsRes, setHabitsRes] = useState([]);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
+  const history = useHistory();
   const userId = jwtDecode(token, { payload: true });
+  const { auth } = useContext(AuthContext);
+
+  // if (!auth) {
+  //   history.push("/login");
+  // }
+  console.log(auth);
 
   const schema = yup
     .object()
