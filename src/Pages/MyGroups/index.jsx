@@ -1,7 +1,9 @@
+import Header from "../../Components/Header";
+
 const MyGroups = () => {
     return (
         <>
-            MyGroups
+            <Header showM/>
         </>
     );
 }
