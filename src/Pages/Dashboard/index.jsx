@@ -7,10 +7,12 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
+import SearchHabit from "../../Components/SearchHabit";
 
 const Dashboard = () => {
   const [habitsRes, setHabitsRes] = useState([]);
   const [buttonPopup, setButtonPopup] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
   const userId = jwtDecode(token, { payload: true });
 
@@ -61,7 +63,12 @@ const Dashboard = () => {
     getHabits();
   }, []);
   return (
-    <>
+    <div>
+      <SearchHabit
+        getHabits={getHabits}
+        habitsRes={habitsRes}
+        setIsSearching={setIsSearching}
+      />
       Dashboard
       <button onClick={() => setButtonPopup(!buttonPopup)}>
         Adicionar hábito
@@ -96,8 +103,11 @@ const Dashboard = () => {
           <button type="submit">Adicionar</button>
         </form>
       </AddHabit>
-      <Habits getHabits={getHabits} habitsRes={habitsRes} />
-    </>
+      {isSearching && (
+        <button onClick={() => setIsSearching(false)}>Voltar</button>
+      )}
+      {!isSearching && <Habits getHabits={getHabits} habitsRes={habitsRes} />}
+    </div>
   );
 };
 
