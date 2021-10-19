@@ -1,8 +1,10 @@
+import { useHistory } from "react-router";
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
 import * as C from "./styles";
 
 const Group = ({ group }) => {
+  const history = useHistory();
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
   const deleteGroup = () => {
@@ -19,17 +21,15 @@ const Group = ({ group }) => {
       });
   };
 
-  const handleClick = (group) => {
-    Api.patch(`/groups/${group.id}`);
-  };
+  // const handleClick = (group) => {
+  //   history.push(`/groups/${group.id}`);
+  // };
 
   return (
-    <C.Container onClick={() => handleClick(group)}>
-      <h1>
-        Nome: {group.name} id:{group.id}
-      </h1>
-      <p>Categoria: {group.category}</p>
-      <p>Descrição: {group.description}</p>
+    <C.Container>
+      <h3>{group.name}</h3>
+      <p>Description: {group.description}</p>
+      <p>{group.category}</p>
 
       <button onClick={deleteGroup}>Deletar</button>
       <button>Editar grupo</button>
