@@ -1,10 +1,22 @@
 import Header from "../../Components/Header";
 import { GroupsContext } from "../../Providers/Groups";
 import { useContext, useState } from "react";
+import Api from "../../Services/API"
 
 const SearchGroups = () => {
     const {data} = useContext(GroupsContext);
     const [input, setInput] = useState("");
+    const [token, setToken] = useState(() => {
+        const localToken = localStorage.getItem("token") || "";
+        return JSON.parse(localToken);
+    });
+    const subscribe = (id) => {
+        Api.post(`groups/${id}/subscribe/`, {
+            headers: {Authorization:`Bearer ${token}`}
+        })
+        .then(() => console.log("subscribed!"))
+        .catch(err => console.log(err))
+    };
 
     return (
         <>
@@ -19,14 +31,14 @@ const SearchGroups = () => {
                         <h3>{filter.name}</h3>
                         <p>{filter.description}</p>
                         <span>{filter.category}</span>
-                        <button>Subscribe</button>
+                        <button onClick={() => subscribe(filter.id)}>Subscribe</button>
                     </li>)) : 
                 data.map((result, index) => (
                     <li key={index}>
                         <h3>{result.name}</h3>
                         <p>{result.description}</p>
                         <span>{result.category}</span>
-                        <button>Subscribe</button>
+                        <button onClick={() => subscribe(result.id)}>Subscribe</button>
                     </li>))}
             </ul>
         </>
