@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/Auth";
 import { GroupContext } from "../../Providers/Group";
+import { GroupsContext } from "../../Providers/Groups";
 import { useHistory, Link } from "react-router-dom";
 import Group from "../../Components/Group";
 import { Dialog } from "@mui/material";
@@ -16,6 +17,8 @@ const Groups = () => {
   const { auth } = useContext(AuthContext);
   const { group, setGroup } = useContext(GroupContext);
   const [insertModal, setInsertModal] = useState(false);
+  const { data } = useContext(GroupsContext);
+  const [input, setInput] = useState("");
 
   const token = localStorage.getItem("token");
 
@@ -35,7 +38,32 @@ const Groups = () => {
       <Header />
       {auth ? (
         <div>
-          <input type="text" placeholder="search" />
+          <input
+            value={input}
+            placeholder="Search Group"
+            onChange={(e) => setInput(e.target.value)}
+          ></input>
+          <ul>
+            {input.length > 0
+              ? data
+                  .filter((result) =>
+                    result.name.toLowerCase().includes(input.toLowerCase())
+                  )
+                  .map((filter, index) => (
+                    <li key={index}>
+                      <h3>{filter.name}</h3>
+                      <p>{filter.description}</p>
+                      <span>{filter.category}</span>
+                    </li>
+                  ))
+              : data.map((result, index) => (
+                  <li key={index}>
+                    <h3>{result.name}</h3>
+                    <p>{result.description}</p>
+                    <span>{result.category}</span>
+                  </li>
+                ))}
+          </ul>
           <button onClick={handleClickInsertModal}>Criar grupo</button>
           <div>
             <Dialog
