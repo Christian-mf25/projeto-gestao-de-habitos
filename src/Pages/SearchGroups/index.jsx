@@ -7,12 +7,15 @@ const SearchGroups = () => {
     const {data} = useContext(GroupsContext);
     const [input, setInput] = useState("");
     const [token, setToken] = useState(() => {
-        const localToken = localStorage.getItem("token") || "";
+        const localToken = localStorage.getItem("@Productive:token") || "";
         return JSON.parse(localToken);
     });
     const subscribe = (id) => {
-        Api.post(`groups/${id}/subscribe/`, {
-            headers: {Authorization:`Bearer ${token}`}
+        Api.post(`groups/${id}/subscribe/`, {},
+        {
+            headers: {
+                Authorization:`Bearer ${token}`
+            }
         })
         .then(() => console.log("subscribed!"))
         .catch(err => console.log(err))
