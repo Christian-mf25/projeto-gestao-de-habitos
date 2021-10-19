@@ -1,5 +1,5 @@
 import Header from "../../Components/Header";
-import { GroupsContext } from "../../Providers/Groups";
+import { GroupsContext } from "../../Providers/SearchGroups";
 import { useContext, useState } from "react";
 import Api from "../../Services/API"
 

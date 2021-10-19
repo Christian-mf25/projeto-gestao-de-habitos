@@ -3,7 +3,7 @@ import { GlobalStyles } from "./Styles/global";
 import { ToastContainer } from "react-toastify";
 import Habits from "./Components/Habits";
 import Routes from "./Routes";
-import {GroupsProvider} from "./Providers/Groups";
+import {GroupsProvider} from "./Providers/SearchGroups";
 
 
 function App() {
