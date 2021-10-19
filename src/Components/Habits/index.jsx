@@ -9,12 +9,14 @@ const Habits = ({ habitsRes }) => {
   const checkIn = (item) => {
     if (item.how_much_achieved < 50) {
       item.how_much_achieved += 1;
+    } else {
+      item.achieved = true;
     }
     Api.patch(
       `habits/${item.id}/`,
       {
         how_much_achieved: item.how_much_achieved,
-        achieved: false,
+        achieved: item.achieved,
       },
       {
         headers: {
