@@ -3,8 +3,9 @@ import { GlobalStyles } from "./Styles/global";
 import { ToastContainer } from "react-toastify";
 import Habits from "./Components/Habits";
 import Routes from "./Routes";
-import {GroupsProvider} from "./Providers/Groups";
-
+import { GroupsProvider } from "./Providers/Groups";
+import { GroupProvider } from "./Providers/Group";
+import { AuthProvider } from "./Providers/Auth";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <GlobalStyles />
         <Routes />
       </div>
-  </GroupsProvider>
+    </GroupsProvider>
   );
 }
 
