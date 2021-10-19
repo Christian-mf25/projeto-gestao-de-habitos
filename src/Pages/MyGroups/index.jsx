@@ -8,6 +8,7 @@ import * as C from "./styles.js";
 import NewGroup from "../../Components/NewGroup";
 import Api from "../../Services/API";
 import { toast } from "react-toastify";
+import Header from "../../Components/Header";
 
 const Groups = () => {
   const history = useHistory();
@@ -31,20 +32,13 @@ const Groups = () => {
 
   return (
     <C.Container>
+      <Header />
       {auth ? (
         <div>
-          <Link className="link" to="/allGroups">
-            <button className="button" variant={"contained"}>
-              Encontrar
-            </button>
+          <Link className="link" to="/mygroups">
+            <button>Encontrar</button>
           </Link>
-          <button
-            className="button"
-            variant={"contained"}
-            onClick={handleClickInsertModal}
-          >
-            Novo grupo
-          </button>
+          <button onClick={handleClickInsertModal}>Criar grupo</button>
           <div>
             <Dialog
               open={insertModal}
