@@ -12,7 +12,7 @@ const SearchGroups = () => {
         return JSON.parse(localToken);
     });
     const subscribe = (id) => {
-        Api.post(`groups/${id}/subscribe/`, {},
+        Api.post(`/groups/${id}/subscribe/`, id,
         {
             headers: {
                 Authorization:`Bearer ${token}`
