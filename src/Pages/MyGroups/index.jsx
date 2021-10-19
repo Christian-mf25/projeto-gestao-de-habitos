@@ -35,9 +35,7 @@ const Groups = () => {
       <Header />
       {auth ? (
         <div>
-          <Link className="link" to="/mygroups">
-            <button>Encontrar</button>
-          </Link>
+          <input type="text" placeholder="search" />
           <button onClick={handleClickInsertModal}>Criar grupo</button>
           <div>
             <Dialog
