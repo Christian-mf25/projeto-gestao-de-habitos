@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
 
-const Habits = ({ habitsRes }) => {
+const Habits = ({ getHabits, habitsRes }) => {
   const achieved = habitsRes.filter((item) => item.achieved === true);
   const notAchieved = habitsRes.filter((item) => item.achieved === false);
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
@@ -26,6 +26,7 @@ const Habits = ({ habitsRes }) => {
       }
     ).then(() => {
       toast.success("Hábito editado");
+      getHabits();
     });
   };
 
@@ -36,7 +37,7 @@ const Habits = ({ habitsRes }) => {
       },
     }).then(() => {
       toast.success("Hábito removido");
-      window.location.reload();
+      getHabits();
     });
   };
 

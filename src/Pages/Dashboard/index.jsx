@@ -44,7 +44,7 @@ const Dashboard = () => {
       (_) => (
         toast.success("Hábito adicionado com sucesso!"),
         setButtonPopup(!buttonPopup),
-        window.location.reload()
+        getHabits()
       )
     );
   };
@@ -96,7 +96,7 @@ const Dashboard = () => {
           <button type="submit">Adicionar</button>
         </form>
       </AddHabit>
-      <Habits habitsRes={habitsRes} />
+      <Habits getHabits={getHabits} habitsRes={habitsRes} />
     </>
   );
 };
