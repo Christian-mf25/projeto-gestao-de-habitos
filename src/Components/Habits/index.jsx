@@ -7,20 +7,20 @@ const Habits = ({ habitsRes }) => {
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
   const checkIn = (item) => {
-    console.log(item);
+    if (item.how_much_achieved < 50) {
+      item.how_much_achieved += 1;
+    }
     Api.patch(
       `habits/${item.id}/`,
       {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        how_much_achieved: item.how_much_achieved,
+        achieved: false,
       },
       {
-        how_much_achieved: item.how_much_achieved + 10,
-        achieved: false,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       }
     ).then(() => {
       toast.success("Hábito editado");
