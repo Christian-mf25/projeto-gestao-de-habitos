@@ -1,35 +1,38 @@
-import SearchGroups from "../Pages/SearchGroups/index";
+import SearchGroups from "../Pages/SearchGroups";
+import { Route, Switch } from "react-router";
+import Dashboard from "../Pages/Dashboard";
+import Register from "../Pages/Register";
+import MyGroups from "../Pages/MyGroups";
+import Login from "../Pages/Login";
+import Home from "../Pages/Home";
 import React from "react";
-import Home from "../Pages/Home/index";
-import { Route, Switch} from "react-router";
-import Register from "../Pages/Register/index";
-import Login from "../Pages/Login/index";
-import Dashboard from "../Pages/Dashboard/index";
-import MyGroups from "../Pages/MyGroups/index";
+import InfoGroup from "../Pages/InfoGroup";
 
 const Routes = () => {
-    return(
+  return (
     <Switch>
-        <Route exact path="/" >
-            <Home/>
-        </Route>
-        <Route path="/register">
-            <Register/>
-        </Route>
-        <Route path="/login">
-            <Login/>
-        </Route>
-        <Route isPrivate path="/dashboard">
-            <Dashboard/>
-        </Route>
-        <Route isPrivate path="/mygroups">
-            <MyGroups/>
-        </Route>
-        <Route isPrivate exact path="/searchgroups">
-            <SearchGroups/>
-        </Route>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/register">
+        <Register />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route isPrivate path="/dashboard">
+        <Dashboard />
+      </Route>
+      <Route isPrivate path="/mygroups">
+        <MyGroups />
+      </Route>
+      <Route isPrivate exact path="/searchgroups">
+        <SearchGroups />
+      </Route>
+      <Route isPrivate exact path="/group/:id">
+        <InfoGroup />
+      </Route>
     </Switch>
-    );
-}
-
-export default Routes; 
+  );
+};
+export default Routes;
