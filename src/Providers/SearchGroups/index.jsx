@@ -1,7 +1,8 @@
 import { createContext, useState, useEffect } from "react";
-import { createContext, useState, useEffect } from "react";
 import Api from "../../Services/API";
+
 export const GroupsContext = createContext([]);
+
 export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
   useEffect(() => {
