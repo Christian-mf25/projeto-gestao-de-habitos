@@ -1,26 +1,25 @@
 import Header from "../../Components/Header";
 import { GroupsContext } from "../../Providers/SearchGroups";
 import { useContext, useState } from "react";
-import Api from "../../Services/API"
+import Api from "../../Services/API";
 import { toast } from "react-toastify";
 
 const SearchGroups = () => {
-    const {data} = useContext(GroupsContext);
-    const [input, setInput] = useState("");
-    const [token, setToken] = useState(() => {
-        const localToken = localStorage.getItem("@Productive:token") || "";
-        return JSON.parse(localToken);
-    });
-    const subscribe = (id) => {
-        Api.post(`/groups/${id}/subscribe/`, id,
-        {
-            headers: {
-                Authorization:`Bearer ${token}`
-            }
-        })
-        .then(() => toast.success("subscribed!"))
-        .catch(err => console.log(err))
-    };
+  const { data } = useContext(GroupsContext);
+  const [input, setInput] = useState("");
+  const [token, setToken] = useState(() => {
+    const localToken = localStorage.getItem("@Productive:token") || "";
+    return JSON.parse(localToken);
+  });
+  const subscribe = (id) => {
+    Api.post(`/groups/${id}/subscribe/`, id, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(() => toast.success("subscribed!"))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
