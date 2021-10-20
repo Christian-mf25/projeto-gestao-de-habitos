@@ -3,9 +3,11 @@ import { GroupsContext } from "../../Providers/SearchGroups";
 import { useContext, useState } from "react";
 import Api from "../../Services/API"
 import { toast } from "react-toastify";
+import {GroupContext} from "../../Providers/Group"
 
 const SearchGroups = () => {
     const {data} = useContext(GroupsContext);
+    const {group} = useContext(GroupContext);
     const [input, setInput] = useState("");
     const [token, setToken] = useState(() => {
         const localToken = localStorage.getItem("@Productive:token") || "";
@@ -27,8 +29,9 @@ const SearchGroups = () => {
             <Header showS/>
             <input value={input} placeholder="Search Group" onChange={(e) => setInput(e.target.value)} ></input>
             <ul>
-                {input.length > 0 ? 
-                data
+                {input.length > 0
+                ? 
+                data.filter(el => group.find(element => element.id === el.id))
                 .filter(result => result.name.toLowerCase().includes(input.toLowerCase()))
                 .map((filter, index) => (
                     <li key={index}>
@@ -37,7 +40,8 @@ const SearchGroups = () => {
                         <span>{filter.category}</span>
                         <button onClick={() => subscribe(filter.id)}>Subscribe</button>
                     </li>)) : 
-                data.map((result, index) => (
+                data.filter(el => group.find(element => element.id === el.id))
+                .map((result, index) => (
                     <li key={index}>
                         <h3>{result.name}</h3>
                         <p>{result.description}</p>
