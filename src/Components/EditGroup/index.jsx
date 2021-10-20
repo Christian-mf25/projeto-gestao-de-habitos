@@ -4,7 +4,13 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Api from "../../Services/API";
 import "./style.css";
-import { ContainerEditGroup } from "./style";
+import {
+  ContainerEditGroup,
+  DivNameGroup,
+  TextFieldDescriptionGroup,
+} from "./style";
+
+import { ParagraphCloseModalGroup } from "./style";
 
 export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
   const { handleEditGroup } = useGroup();
@@ -41,18 +47,25 @@ export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
         onSubmit={handleSubmit(onSaveEdition)}
         className={actived ? "editGroupTrue" : "editGroupFalse"}
       >
-        <div>
+        <ContainerEditGroup>
+          <DivNameGroup>
+            {item.name}
+            <ParagraphCloseModalGroup onClick={() => setActived(false)}>
+              X
+            </ParagraphCloseModalGroup>
+          </DivNameGroup>
+          <br />
           <div>
-            <div>{item.name}</div>
-            <div onClick={() => setActived(false)}>X</div>
-          </div>
-
-          <div>
-            <input placeholder="Nova descrição" {...register("description")} />
+            <TextFieldDescriptionGroup
+              id="outlined-helperText"
+              label="Description"
+              defaultValue={item.description}
+              {...register("description")}
+            />
             <button type="submit">Salvar</button>
             <button>Excluir Grupo</button>
           </div>
-        </div>
+        </ContainerEditGroup>
       </div>
     </>
   );

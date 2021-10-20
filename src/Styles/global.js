@@ -3,8 +3,12 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyles = createGlobalStyle`
     :root {
         --color-purple-card: #4e116a;
+        --color-secondary: #7580f9;
         --color-text-primary: #cfcfcf;
         --color-black-background: #181818;
+        --color-title: #f5f5f5;
+        --color-text: #a788b5;
+        
     }
     body {
         margin: 0;

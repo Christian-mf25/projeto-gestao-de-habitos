@@ -17,9 +17,9 @@ const Card = ({ item }) => {
       <EditGroupCard actived={actived} setActived={setActived} item={item} />
       <DivCard onClick={() => myClickTeste()}>
         <>
-          <li key={item.id}>
+          <div key={item.id}>
             <Group group={item} />
-          </li>
+          </div>
         </>
       </DivCard>
     </>
