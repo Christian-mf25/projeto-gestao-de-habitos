@@ -41,7 +41,7 @@ const LoginForm = () => {
         );
         sendTo("/dashboard");
       })
-      .catch((_) => toast.error("Invalid email or password "));
+      .catch((_) => toast.error("Invalid email or password"));
   };
 
   return (
