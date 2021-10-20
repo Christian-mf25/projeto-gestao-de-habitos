@@ -9,21 +9,42 @@ import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 import SearchHabit from "../../Components/SearchHabit";
 import { AuthContext } from "../../Providers/Auth";
-import { useHistory } from "react-router";
+import { Redirect, useHistory } from "react-router";
+import Header from "../../Components/Header";
 
 const Dashboard = () => {
+  const { auth } = useContext(AuthContext);
+  const history = useHistory();
   const [habitsRes, setHabitsRes] = useState([]);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
-  const history = useHistory();
-  const userId = jwtDecode(token, { payload: true });
-  const { auth } = useContext(AuthContext);
+  // const userId = jwtDecode(token, { payload: true });
+  const [authenticadet, setAuthenticated] = useState(false);
+
+  // useEffect(() => {
+  //   const token = JSON.parse(localStorage.getItem("@Productive:token"));
+  //   console.log(token);
+
+  //   if (!token) {
+  //     return <Redirect to="/login" />;
+  //   }
+  // }, [authenticadet]);
+  const [userId, setUserId] = useState("");
 
   // if (!auth) {
   //   history.push("/login");
   // }
-  console.log(auth);
+
+  // if (token) {
+  //   setUserId(jwtDecode(token, { payload: true }));
+  //   // setAuthenticated(true);
+  //   console.log("ta ai");
+  // }
+
+  token
+    ? setUserId(jwtDecode(token, { payload: true }))
+    : history.push("/login");
 
   const schema = yup
     .object()
@@ -73,6 +94,7 @@ const Dashboard = () => {
   }, []);
   return (
     <div>
+      <Header showD />
       <SearchHabit
         getHabits={getHabits}
         habitsRes={habitsRes}
@@ -112,9 +134,6 @@ const Dashboard = () => {
           <button type="submit">Adicionar</button>
         </form>
       </AddHabit>
-      {isSearching && (
-        <button onClick={() => setIsSearching(false)}>Voltar</button>
-      )}
       {!isSearching && <Habits getHabits={getHabits} habitsRes={habitsRes} />}
     </div>
   );

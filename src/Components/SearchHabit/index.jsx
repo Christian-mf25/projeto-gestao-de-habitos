@@ -27,7 +27,7 @@ const SearchHabit = ({ habitsRes, setIsSearching, getHabits }) => {
         },
       }
     ).then(() => {
-      toast.success("Hábito editado");
+      toast.success("Check-in realizado!");
       getHabits();
     });
   };

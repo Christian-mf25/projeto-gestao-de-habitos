@@ -25,7 +25,7 @@ const Habits = ({ getHabits, habitsRes }) => {
         },
       }
     ).then(() => {
-      toast.success("Hábito editado");
+      toast.success("Check-in realizado!");
       getHabits();
     });
   };
