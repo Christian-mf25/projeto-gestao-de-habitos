@@ -1,4 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { TextField, Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -7,6 +8,13 @@ import * as yup from "yup";
 
 const RegisterForm = () => {
   const history = useHistory();
+	const token = JSON.parse(localStorage.getItem("@Productive:token"));
+
+  const sendTo = (path) => {
+    history.push(path);
+  };
+
+  token && sendTo("/dashboard");
 
   const schema = yup.object().shape({
     username: yup
@@ -34,17 +42,16 @@ const RegisterForm = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const sendToLogin = () => {
-    history.push("/login");
+    sendTo("/login");
   };
 
   const handleForm = (data) => {
-		const {username, email, password} = data
-		const newData = {username, email, password}
-    Api
-      .post("/users/", newData)
+    const { username, email, password } = data;
+    const newData = { username, email, password };
+    Api.post("/users/", newData)
       .then((_) => {
         toast.success("account created successfully ");
-        return sendToLogin();
+        return sendTo("/login");
       })
       .catch((_) => toast.error("Try another e-mail"));
   };
@@ -53,35 +60,82 @@ const RegisterForm = () => {
     <>
       <form onSubmit={handleSubmit(handleForm)}>
         <div>
-          <input type="text" placeholder="Username" {...register("username")} />
-          <p>{errors.username?.message}</p>
-        </div>
-
-        <div>
-          <input type="text" placeholder="Email" {...register("email")} />
-          <p>{errors.email?.message}</p>
-        </div>
-
-        <div>
-          <input type="text" placeholder="Password" {...register("password")} />
-          <p>{errors.password?.message}</p>
-        </div>
-
-        <div>
-          <input
-            type="text"
-            placeholder="Confirm password"
-            {...register("confirm_password")}
+          <TextField
+            label="Username"
+            color="secondary"
+            size="small"
+            variant="outlined"
+            margin="dense"
+            {...register("username")}
+            error={!!errors.username}
+            helperText={errors.username?.message}
           />
-          <p>{errors.confirm_password?.message}</p>
         </div>
 
-        <button type="submit">Register</button>
+        <div>
+          <TextField
+            label="Email"
+            color="secondary"
+            size="small"
+            variant="outlined"
+            margin="dense"
+            {...register("email")}
+            error={!!errors.email}
+            helperText={errors.email?.message}
+          />
+        </div>
+
+        <div>
+          <TextField
+            type="password"
+            label="Password"
+            color="secondary"
+            size="small"
+            variant="outlined"
+            margin="dense"
+            {...register("password")}
+            error={!!errors.password}
+            helperText={errors.password?.message}
+          />
+        </div>
+
+        <div>
+          <TextField
+            type="password"
+            label="Confirm password"
+            color="secondary"
+            size="small"
+            variant="outlined"
+            margin="dense"
+            {...register("confirm_password")}
+            error={!!errors.confirm_password}
+            helperText={errors.confirm_password?.message}
+          />
+        </div>
+
+        <Button
+          type="submit"
+          variant="contained"
+          size="medium"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, #A40FF2, #6D95FB, #0BD6F7)",
+          }}
+        >
+          Register
+        </Button>
       </form>
 
       <p>Already has an account?</p>
 
-      <button onClick={sendToLogin}>Login</button>
+      <Button
+        variant="contained"
+        size="medium"
+        style={{ backgroundColor: "#363153", color: "#9593a4" }}
+        onClick={() => sendTo("/login")}
+      >
+        Login
+      </Button>
     </>
   );
 };
