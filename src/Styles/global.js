@@ -5,6 +5,7 @@ export const GlobalStyles = createGlobalStyle`
         --color-purple-card: #4e116a;
         --color-text-primary: #cfcfcf;
         --color-black-background: #181818;
+				--color-background: rgba(24, 24, 24, 0.8);
     }
     body {
         margin: 0;
