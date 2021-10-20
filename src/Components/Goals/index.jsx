@@ -28,6 +28,15 @@ const Goals = () => {
           toast.success("Check-in realizado!");
         });
     };
+    const deleteGoal = (id) => {
+        Api.delete(`goals/${id}/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }).then(() => {
+          toast.success("Meta removida");
+        });
+      };
 
     useEffect(() => {
         Api.get(`goals/?group=${id}&page=1`)
@@ -45,6 +54,7 @@ const Goals = () => {
                     <p>{goal.achieved}</p>
                     <span>{goal.how_much_achieved}</span>
                     <button onClick={() => checkIn(goal)}>Check-in</button>
+                    <button onClick={() => deleteGoal(goal.id)}>Deletar</button>
                 </li>)}
         </ul>
     );
