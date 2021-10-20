@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import Api from "../../Services/API"
 import {useParams} from "react-router-dom";
+
 const Goals = () => {
     const {id} = useParams()
     const [goals, setGoals] = useState([])
@@ -18,7 +19,6 @@ const Goals = () => {
                     <p>{goal.difficulty}</p>
                     <p>{goal.achieved}</p>
                     <span>{goal.how_much_achieved}</span>
-                    <div>{goal.group}</div>
                 </li>)}
         </ul>
     );
