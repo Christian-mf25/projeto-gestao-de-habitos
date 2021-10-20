@@ -1,7 +1,9 @@
+import Goals from "../../Components/Goals"
+
 const InfoGroup = () => {
     return (
         <>
-            InfoGroup
+            <Goals/>
         </>
     );
 }
