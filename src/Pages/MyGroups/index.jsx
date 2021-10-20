@@ -54,26 +54,18 @@ const Groups = () => {
                   )
                   .map((filter, index) => (
                     <li key={index}>
-                      <h3>{filter.name}no</h3>
+                      <h3>{filter.name}</h3>
                       <p>{filter.description}</p>
                       <span>{filter.category}</span>
                     </li>
                   ))
-              : data?.map((item, index) => {
-                  return (
-                    <div key={index}>
-                      {item.users_on_group.map((user, i) => {
-                        if (user.id === decodedId.user_id) {
-                          return (
-                            <li key={user.id}>
-                              <Group group={item} />
-                            </li>
-                          );
-                        }
-                      })}
-                    </div>
-                  );
-                })}
+              : data?.map((item, index) => (
+                  <div key={index}>
+                    <li key={item.id}>
+                      <Group group={item} />
+                    </li>
+                  </div>
+                ))}
           </ul>
           <div>
             <Dialog
@@ -88,28 +80,28 @@ const Groups = () => {
           </div>
 
           <ul>
-            {data?.map((item, index) => {
+            {/* data?.map((item, index) => {
               return (
                 <div key={index}>
-                  {/* console.log(item.users_on_group) */}
+                  {console.log(item.users_on_group)}
                   {item.users_on_group.map(
                     (user, i) =>
                       user.id === decodedId.user_id && (
                         <>
-                          {/* {console.log("entrou")}
+                          {{console.log("entrou")}
                           <li key={user.id}>
                             {console.log(user.id)}
                             <Group group={user} />;
-                          </li> */}
+                          </li>}
                         </>
                       )
                   )}
                   {/* <li key={item.id}>
                     <Group group={item} />;
-                  </li> */}
+                  </li>}
                 </div>
               );
-            })}
+            }) */}
           </ul>
         </div>
       ) : (

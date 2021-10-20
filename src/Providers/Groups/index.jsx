@@ -5,17 +5,16 @@ export const GroupsContext = createContext([]);
 
 export const GroupsProvider = ({ children }) => {
   const [data, setData] = useState([]);
-  const [nextPage, setNextPage] = useState(1);
+  const token = JSON.parse(localStorage.getItem("@Productive:token"));
   useEffect(() => {
-    Api.get(`groups/?page=${nextPage}`)
-      .then((response) => {
-        setData([...data, ...response.data.results]);
-        setNextPage(nextPage + 1);
-      })
-      .catch((err) => console.log(err));
-  }, [nextPage]);
-
-  console.log(data.length);
+    Api.get("/groups/subscriptions/", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => setData(response.data))
+      .catch((err) => console.log("error: ", err));
+  });
 
   return (
     <GroupsContext.Provider value={{ data }}>{children}</GroupsContext.Provider>
