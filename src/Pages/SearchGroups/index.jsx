@@ -1,7 +1,7 @@
 import Header from "../../Components/Header";
 import { GroupsContext } from "../../Providers/SearchGroups";
 import { useContext, useState } from "react";
-import Api from "../../Services/API"
+import Api from "../../Services/API";
 import { toast } from "react-toastify";
 import {GroupContext} from "../../Providers/Group"
 
