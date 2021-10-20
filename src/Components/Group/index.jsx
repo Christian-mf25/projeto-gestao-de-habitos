@@ -6,7 +6,6 @@ import * as C from "./styles";
 const Group = ({ group }) => {
   const history = useHistory();
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
-  console.log(group);
 
   const deleteGroup = () => {
     Api.delete(`groups/${group.id}/unsubscribe/`, {
