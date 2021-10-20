@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/Auth";
 import { GroupContext } from "../../Providers/Group";
 import { GroupsContext } from "../../Providers/SearchGroups";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Group from "../../Components/Group";
 import { Dialog } from "@material-ui/core";
 import * as C from "./styles.js";
