@@ -1,14 +1,28 @@
+import { useState } from "react";
+import { EditGroupCard } from "../EditGroup";
+import Group from "../Group";
 import { DivCard } from "./style";
+import "./style.css";
 
 // COMPONENTE PARA RENDERIZAR CADA CARD DOS HABITS / GROUPS / SEARCH-GROUPS
-const Card = () => {
+const Card = ({ item }) => {
+  const [actived, setActived] = useState(false);
+
+  const myClickTeste = () => {
+    setActived(true);
+  };
+  console.log("item", item);
   return (
-    <DivCard>
-      <>
-        {/* AQUI VAI O COMPONENTE COM AS INFORMAÇÕES VINDAS DA API */}
-        <p>Oi</p>
-      </>
-    </DivCard>
+    <>
+      <EditGroupCard actived={actived} setActived={setActived} item={item} />
+      <DivCard onClick={() => myClickTeste()}>
+        <>
+          <li key={item.id}>
+            <Group group={item} />
+          </li>
+        </>
+      </DivCard>
+    </>
   );
 };
 

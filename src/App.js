@@ -1,9 +1,7 @@
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GlobalStyles } from "./Styles/global";
-import { ToastContainer } from "react-toastify";
-import Habits from "./Components/Habits";
 import Routes from "./Routes";
-
 
 function App() {
   return (

@@ -2,8 +2,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import Api from "../../Services/API";
 import * as yup from "yup";
-import axios from "axios";
 
 const LoginForm = () => {
   const history = useHistory();
@@ -22,9 +22,13 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
+	const sendToRegister = () =>{
+		history.push("/register");
+	}
+
   const handleForm = (data) => {
-    axios
-      .post("https://kenzie-habits.herokuapp.com/sessions/", data)
+    Api
+      .post("/sessions/", data)
       .then((response) => {
         localStorage.clear();
         toast.success("Welcome to Productive +");
@@ -52,6 +56,12 @@ const LoginForm = () => {
 
         <button type="submit">Login</button>
       </form>
+
+			<p>don't have an account?</p>
+			
+			<button onClick={sendToRegister}>
+				Register
+			</button>
     </section>
   );
 };
