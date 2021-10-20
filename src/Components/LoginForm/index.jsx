@@ -22,13 +22,12 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-	const sendToRegister = () =>{
-		history.push("/register");
-	}
+  const sendToRegister = () => {
+    history.push("/register");
+  };
 
   const handleForm = (data) => {
-    Api
-      .post("/sessions/", data)
+    Api.post("/sessions/", data)
       .then((response) => {
         localStorage.clear();
         toast.success("Welcome to Productive +");
@@ -57,11 +56,9 @@ const LoginForm = () => {
         <button type="submit">Login</button>
       </form>
 
-			<p>don't have an account?</p>
-			
-			<button onClick={sendToRegister}>
-				Register
-			</button>
+      <p>don't have an account?</p>
+
+      <button onClick={sendToRegister}>Register</button>
     </section>
   );
 };
