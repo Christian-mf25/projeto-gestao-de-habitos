@@ -19,17 +19,11 @@ const Group = ({ group }) => {
       });
   };
 
-  const handleClick = (group) => {
-    Api.patch(`/groups/${group.id}`);
-  };
-
   return (
-    <C.Container onClick={() => handleClick(group)}>
-      <h1>
-        Nome: {group.name} id:{group.id}
-      </h1>
-      <p>Categoria: {group.category}</p>
-      <p>Descrição: {group.description}</p>
+    <C.Container>
+      <h3>{group.name}</h3>
+      <p>Description: {group.description}</p>
+      <p>{group.category}</p>
 
       <button onClick={deleteGroup}>Deletar</button>
       <button>Editar grupo</button>

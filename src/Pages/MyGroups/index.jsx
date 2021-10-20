@@ -1,33 +1,29 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Providers/Auth";
 import { GroupContext } from "../../Providers/Group";
-import { GroupsContext } from "../../Providers/SearchGroups";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Group from "../../Components/Group";
 import { Dialog } from "@material-ui/core";
 import * as C from "./styles.js";
 import NewGroup from "../../Components/NewGroup";
 import Api from "../../Services/API";
-import { toast } from "react-toastify";
 import Header from "../../Components/Header";
 
 const Groups = () => {
   const history = useHistory();
 
-  const { auth } = useContext(AuthContext);
   const { group, setGroup } = useContext(GroupContext);
   const [insertModal, setInsertModal] = useState(false);
-  const { data } = useContext(GroupsContext);
+  const { data } = useContext(GroupContext);
   const [input, setInput] = useState("");
 
-  const token = localStorage.getItem("token");
+  const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
   useEffect(() => {
-    Api.get("/groups/subscriptions/", {
+    Api.get("/groups/", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => setGroup(response.data))
-      .catch((_) => toast.error("Algo deu errado."));
+      .catch((err) => console.log(err));
   }, [insertModal]);
 
   const handleClickInsertModal = () => setInsertModal(!insertModal);
@@ -36,8 +32,9 @@ const Groups = () => {
   return (
     <C.Container>
       <Header />
-      {auth ? (
+      {token ? (
         <div>
+          <button onClick={handleClickInsertModal}>Criar grupo</button>
           <input
             value={input}
             placeholder="Search Group"
@@ -56,15 +53,14 @@ const Groups = () => {
                       <span>{filter.category}</span>
                     </li>
                   ))
-              : data.map((result, index) => (
-                  <li key={index}>
-                    <h3>{result.name}</h3>
-                    <p>{result.description}</p>
-                    <span>{result.category}</span>
-                  </li>
+              : data?.map((item, index) => (
+                  <div key={index}>
+                    <li key={item.id}>
+                      <Group group={item} />
+                    </li>
+                  </div>
                 ))}
           </ul>
-          <button onClick={handleClickInsertModal}>Criar grupo</button>
           <div>
             <Dialog
               open={insertModal}
@@ -76,16 +72,6 @@ const Groups = () => {
               )}
             </Dialog>
           </div>
-
-          <ul>
-            {group?.map((item) => {
-              return (
-                <li key={item.id}>
-                  <Group group={item} />;
-                </li>
-              );
-            })}
-          </ul>
         </div>
       ) : (
         history.push("/login")

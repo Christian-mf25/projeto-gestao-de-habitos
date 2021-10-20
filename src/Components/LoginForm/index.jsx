@@ -1,12 +1,22 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { TextField, Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
 import * as yup from "yup";
 
+import { PrimaryButton } from "../Styled/style";
+
 const LoginForm = () => {
   const history = useHistory();
+  const token = JSON.parse(localStorage.getItem("@Productive:token"));
+
+  const sendTo = (path) => {
+    history.push(path);
+  };
+
+  token && sendTo("/dashboard");
 
   const schema = yup.object().shape({
     username: yup
@@ -22,13 +32,8 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-	const sendToRegister = () =>{
-		history.push("/register");
-	}
-
   const handleForm = (data) => {
-    Api
-      .post("/sessions/", data)
+    Api.post("/sessions/", data)
       .then((response) => {
         localStorage.clear();
         toast.success("Welcome to Productive +");
@@ -36,32 +41,64 @@ const LoginForm = () => {
           "@Productive:token",
           JSON.stringify(response.data.access)
         );
-        history.push("/dashboard");
+        sendTo("/dashboard");
       })
-      .catch((_) => toast.error("Invalid email or password "));
+      .catch((_) => toast.error("Invalid email or password"));
   };
 
   return (
     <section>
+
+			<div ></div>
       <form onSubmit={handleSubmit(handleForm)}>
         <div>
-          <input type="text" placeholder="Username" {...register("username")} />
-          <p>{errors.username?.message}</p>
+          <TextField
+            label="Username"
+            color="secondary"
+            size="small"
+            variant="outlined"
+            margin="dense"
+            {...register("username")}
+            error={!!errors.username}
+            helperText={errors.username?.message}
+          />
         </div>
 
         <div>
-          <input type="text" placeholder="Password" {...register("password")} />
-          <p>{errors.password?.message}</p>
+          <TextField
+            type="password"
+            label="Password"
+            color="secondary"
+            size="small"
+            variant="outlined"
+            margin="dense"
+            {...register("password")}
+            error={!!errors.password}
+            helperText={errors.password?.message}
+          />
         </div>
+        <p>forgot password?</p>
 
-        <button type="submit">Login</button>
+        <PrimaryButton
+          type="submit"
+          variant="contained"
+          size="medium"
+          
+        >
+          Login
+        </PrimaryButton>
       </form>
 
-			<p>don't have an account?</p>
-			
-			<button onClick={sendToRegister}>
-				Register
-			</button>
+      <p>don't have an account?</p>
+
+      <Button
+        variant="contained"
+        size="medium"
+        style={{ backgroundColor: "#363153", color: "#9593a4" }}
+        onClick={() => sendTo("/register")}
+      >
+        Register
+      </Button>
     </section>
   );
 };
