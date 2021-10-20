@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import Api from "../../Services/API";
 import * as yup from "yup";
 
+import { PrimaryButton } from "../Styled/style";
+
 const LoginForm = () => {
   const history = useHistory();
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
@@ -46,6 +48,8 @@ const LoginForm = () => {
 
   return (
     <section>
+
+			<div ></div>
       <form onSubmit={handleSubmit(handleForm)}>
         <div>
           <TextField
@@ -73,18 +77,16 @@ const LoginForm = () => {
             helperText={errors.password?.message}
           />
         </div>
+        <p>forgot password?</p>
 
-        <Button
+        <PrimaryButton
           type="submit"
           variant="contained"
           size="medium"
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg, #A40FF2, #6D95FB, #0BD6F7)",
-          }}
+          
         >
           Login
-        </Button>
+        </PrimaryButton>
       </form>
 
       <p>don't have an account?</p>
