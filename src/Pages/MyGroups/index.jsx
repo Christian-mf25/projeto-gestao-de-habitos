@@ -23,8 +23,6 @@ const Groups = () => {
 
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
   const decodedId = jwt_decode(token);
-  console.log(data);
-  console.log(typeof decodedId.user_id);
 
   useEffect(() => {
     Api.get("/groups/", {
@@ -56,7 +54,7 @@ const Groups = () => {
                   )
                   .map((filter, index) => (
                     <li key={index}>
-                      <h3>{filter.name}</h3>
+                      <h3>{filter.name}no</h3>
                       <p>{filter.description}</p>
                       <span>{filter.category}</span>
                     </li>
@@ -64,9 +62,14 @@ const Groups = () => {
               : data?.map((item, index) => {
                   return (
                     <div key={index}>
-                      {console.log(item.users_on_group)}
                       {item.users_on_group.map((user, i) => {
-                        return console.log(user.id);
+                        if (user.id === decodedId.user_id) {
+                          return (
+                            <li key={user.id}>
+                              <Group group={item} />
+                            </li>
+                          );
+                        }
                       })}
                     </div>
                   );
@@ -88,14 +91,17 @@ const Groups = () => {
             {data?.map((item, index) => {
               return (
                 <div key={index}>
-                  {console.log(item.users_on_group)}
+                  {/* console.log(item.users_on_group) */}
                   {item.users_on_group.map(
                     (user, i) =>
                       user.id === decodedId.user_id && (
-                        <li key={user.id}>
-                          {console.log(user.id)}
-                          <Group group={user} />;
-                        </li>
+                        <>
+                          {/* {console.log("entrou")}
+                          <li key={user.id}>
+                            {console.log(user.id)}
+                            <Group group={user} />;
+                          </li> */}
+                        </>
                       )
                   )}
                   {/* <li key={item.id}>
