@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/Auth";
 import { GroupContext } from "../../Providers/Group";
-import { GroupsContext } from "../../Providers/Groups";
+import { GroupsContext } from "../../Providers/SearchGroups";
 import { useHistory } from "react-router-dom";
 import Group from "../../Components/Group";
 import { Dialog } from "@material-ui/core";
@@ -18,7 +18,7 @@ const Groups = () => {
   const { auth } = useContext(AuthContext);
   const { group, setGroup } = useContext(GroupContext);
   const [insertModal, setInsertModal] = useState(false);
-  const { data } = useContext(GroupsContext);
+  const { data } = useContext(GroupContext);
   const [input, setInput] = useState("");
 
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
@@ -38,7 +38,7 @@ const Groups = () => {
   return (
     <C.Container>
       <Header />
-      {!auth ? (
+      {auth ? (
         <div>
           <button onClick={handleClickInsertModal}>Criar grupo</button>
           <input

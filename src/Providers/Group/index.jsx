@@ -1,27 +1,22 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import api from "../../Services/API";
-import { useAuth } from "../Auth";
+import { createContext, useState, useEffect } from "react";
+import Api from "../../Services/API";
 
-export const GroupContext = createContext();
+export const GroupContext = createContext([]);
 
 export const GroupProvider = ({ children }) => {
-  const { token } = useAuth();
-  const [group, setGroup] = useState([]);
-
+  const [data, setData] = useState([]);
+  const token = JSON.parse(localStorage.getItem("@Productive:token"));
   useEffect(() => {
-    api
-      .get("/groups/subscriptions/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => setGroup(response.data))
-      .catch((err) => console.log(err));
-  }, []);
+    Api.get("/groups/subscriptions/", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => setData(response.data))
+      .catch((err) => console.log("error: ", err));
+  });
 
   return (
-    <GroupContext.Provider value={{ group }}>{children}</GroupContext.Provider>
+    <GroupContext.Provider value={{ data }}>{children}</GroupContext.Provider>
   );
 };
-
-export const useGroup = () => useContext(GroupContext);

@@ -5,15 +5,10 @@ export const GroupsContext = createContext([]);
 
 export const GroupsProvider = ({ children }) => {
   const [data, setData] = useState([]);
-  const token = JSON.parse(localStorage.getItem("@Productive:token"));
   useEffect(() => {
-    Api.get("/groups/subscriptions/", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => setData(response.data))
-      .catch((err) => console.log("error: ", err));
+    Api.get("groups/")
+      .then((response) => setData(response.data.results))
+      .catch((err) => console.log(err));
   });
 
   return (
