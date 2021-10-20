@@ -4,14 +4,13 @@ import Api from "../../Services/API";
 export const GroupsContext = createContext([]);
 
 export const GroupsProvider = ({ children }) => {
-  const [data, setData] = useState([]);
+  const [groups, setGroups] = useState([]);
   useEffect(() => {
     Api.get("groups/")
-      .then((response) => setData(response.data.results))
+      .then((response) => setGroups(response.data.results))
       .catch((err) => console.log(err));
   });
-
   return (
-    <GroupsContext.Provider value={{ data }}>{children}</GroupsContext.Provider>
+    <GroupsContext.Provider value={{ groups }}>{children}</GroupsContext.Provider>
   );
 };
