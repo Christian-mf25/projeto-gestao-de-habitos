@@ -10,6 +10,7 @@ import NewGroup from "../../Components/NewGroup";
 import Api from "../../Services/API";
 import { toast } from "react-toastify";
 import Header from "../../Components/Header";
+import jwt_decode from "jwt-decode";
 
 const Groups = () => {
   const history = useHistory();
@@ -20,10 +21,11 @@ const Groups = () => {
   const { data } = useContext(GroupsContext);
   const [input, setInput] = useState("");
 
-  const token = localStorage.getItem("token");
+  const token = JSON.parse(localStorage.getItem("@Productive:token"));
+  const decodedId = jwt_decode(token);
 
   useEffect(() => {
-    Api.get("/groups/subscriptions/", {
+    Api.get("/groups/", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => setGroup(response.data))
@@ -36,8 +38,9 @@ const Groups = () => {
   return (
     <C.Container>
       <Header />
-      {auth ? (
+      {!auth ? (
         <div>
+          <button onClick={handleClickInsertModal}>Criar grupo</button>
           <input
             value={input}
             placeholder="Search Group"
@@ -51,20 +54,27 @@ const Groups = () => {
                   )
                   .map((filter, index) => (
                     <li key={index}>
-                      <h3>{filter.name}</h3>
+                      <h3>{filter.name}no</h3>
                       <p>{filter.description}</p>
                       <span>{filter.category}</span>
                     </li>
                   ))
-              : data.map((result, index) => (
-                  <li key={index}>
-                    <h3>{result.name}</h3>
-                    <p>{result.description}</p>
-                    <span>{result.category}</span>
-                  </li>
-                ))}
+              : data?.map((item, index) => {
+                  return (
+                    <div key={index}>
+                      {item.users_on_group.map((user, i) => {
+                        if (user.id === decodedId.user_id) {
+                          return (
+                            <li key={user.id}>
+                              <Group group={item} />
+                            </li>
+                          );
+                        }
+                      })}
+                    </div>
+                  );
+                })}
           </ul>
-          <button onClick={handleClickInsertModal}>Criar grupo</button>
           <div>
             <Dialog
               open={insertModal}
@@ -78,11 +88,26 @@ const Groups = () => {
           </div>
 
           <ul>
-            {group?.map((item) => {
+            {data?.map((item, index) => {
               return (
-                <li key={item.id}>
-                  <Group group={item} />;
-                </li>
+                <div key={index}>
+                  {/* console.log(item.users_on_group) */}
+                  {item.users_on_group.map(
+                    (user, i) =>
+                      user.id === decodedId.user_id && (
+                        <>
+                          {/* {console.log("entrou")}
+                          <li key={user.id}>
+                            {console.log(user.id)}
+                            <Group group={user} />;
+                          </li> */}
+                        </>
+                      )
+                  )}
+                  {/* <li key={item.id}>
+                    <Group group={item} />;
+                  </li> */}
+                </div>
               );
             })}
           </ul>
