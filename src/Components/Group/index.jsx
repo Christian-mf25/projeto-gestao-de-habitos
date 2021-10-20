@@ -1,10 +1,8 @@
-import { useHistory } from "react-router";
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
 import * as C from "./styles";
 
 const Group = ({ group }) => {
-  const history = useHistory();
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
   const deleteGroup = () => {
@@ -20,10 +18,6 @@ const Group = ({ group }) => {
         toast.error("Algo errado aconteceu");
       });
   };
-
-  // const handleClick = (group) => {
-  //   history.push(`/groups/${group.id}`);
-  // };
 
   return (
     <C.Container>
