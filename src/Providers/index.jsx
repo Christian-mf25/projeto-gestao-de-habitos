@@ -1,6 +1,6 @@
 import { AuthProvider } from "./Auth";
 import { GroupProvider } from "./Group";
-import { GroupsProvider } from "./Groups";
+import { GroupsProvider } from "./SearchGroups";
 
 const Providers = ({ children }) => {
   return (
