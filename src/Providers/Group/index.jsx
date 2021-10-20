@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import { toast } from "react-toastify";
 import Api from "../../Services/API";
 
 export const GroupContext = createContext([]);
@@ -16,7 +17,21 @@ export const GroupProvider = ({ children }) => {
       .catch((err) => console.log("error: ", err));
   });
 
+  const handleEditGroup = (info, id) => {
+    Api.patch(`/groups/${id}/`, info, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((_) => toast.success("Grupo editado"))
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <GroupContext.Provider value={{ data }}>{children}</GroupContext.Provider>
+    <GroupContext.Provider value={{ data, handleEditGroup }}>
+      {children}
+    </GroupContext.Provider>
   );
 };
+
+export const useGroup = () => useContext(GroupContext);

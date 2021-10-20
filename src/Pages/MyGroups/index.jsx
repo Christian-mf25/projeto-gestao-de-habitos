@@ -7,6 +7,7 @@ import * as C from "./styles.js";
 import NewGroup from "../../Components/NewGroup";
 import Api from "../../Services/API";
 import Header from "../../Components/Header";
+import { EditGroupCard } from "../../Components/EditGroup";
 
 const Groups = () => {
   const history = useHistory();
@@ -34,6 +35,7 @@ const Groups = () => {
       <Header />
       {token ? (
         <div>
+          <EditGroupCard />
           <button onClick={handleClickInsertModal}>Criar grupo</button>
           <input
             value={input}
