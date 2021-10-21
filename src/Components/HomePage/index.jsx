@@ -30,8 +30,6 @@ const HomePage = () => {
     history.push(path);
   };
 
-  token && sendTo("/dashboard");
-
   return (
     <Container>
       <Header>
@@ -85,25 +83,33 @@ const HomePage = () => {
           <section>
             <div>
               <img src={christian} alt="christian" />
-              <p>Christian Ferreira</p>
+              <h4>Christian Ferreira</h4>
+							<p>Tech Leader</p>
             </div>
             <div>
               <img src={julio} alt="julio" />
-              <p>Julio Marodin</p>
+              <h4>Julio Marodin</h4>
+							<p>Product Owner</p>
             </div>
             <div>
               <img src={maria} alt="maria" />
-              <p>Fernanda Baia</p>
+              <h4>Fernanda Baia</h4>
+							<p>Quality Assurance</p>
             </div>
             <div>
               <img src={tulio} alt="tulio" />
-              <p>Tulio Goulart</p>
+              <h4>Tulio Goulart</h4>
+							<p>Quality Assurance</p>
             </div>
             <div>
               <img src={victor} alt="victor" />
-              <p>Victor Varela</p>
+              <h4>Victor Varela</h4>
+							<p>Scrum Master</p>
             </div>
           </section>
+					<section className="copy">
+						<p>Desenvolvido por &copy; Productive+</p>
+					</section>
         </Footer>
       </HomeContainer>
     </Container>

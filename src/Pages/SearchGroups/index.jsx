@@ -4,7 +4,12 @@ import { useContext, useState } from "react";
 import Api from "../../Services/API";
 import { toast } from "react-toastify";
 import { GroupContext } from "../../Providers/Group";
-import * as C from "../MyGroups/styles";
+import { Input } from "../../Components/Styled/style";
+import { SectionFlex, Li } from "./style";
+
+import { GiHealthNormal, GiMeditation } from "react-icons/gi";
+import { FaBrain, FaGamepad } from "react-icons/fa";
+import { HiTemplate } from "react-icons/hi";
 
 const SearchGroups = () => {
   const { groups } = useContext(GroupsContext);
@@ -26,44 +31,80 @@ const SearchGroups = () => {
   return (
     <>
       <Header showS />
-
-      <C.DivColorApp>
-        <input
+      <SectionFlex>
+        <Input
           value={input}
-          placeholder="Search Group"
+          label="Search Group"
+          size="small"
+          variant="outlined"
+          margin="dense"
           onChange={(e) => setInput(e.target.value)}
-        ></input>
+        ></Input>
         <ul>
           {input.length > 0
             ? groups
-                .filter((el) => !data?.find((element) => element.id !== el.id))
                 .filter((result) =>
                   result.name.toLowerCase().includes(input.toLowerCase())
                 )
                 .map((filter, index) => (
-                  <li key={index}>
-                    <h3>{filter.name}</h3>
-                    <p>{filter.description}</p>
-                    <span>{filter.category}</span>
-                    <button onClick={() => subscribe(filter.id)}>
-                      Subscribe
-                    </button>
-                  </li>
+                  <Li key={index}>
+                    <span>
+                      {filter.category === "Saúde" ? (
+                        <GiHealthNormal />
+                      ) : filter.category === "Educação" ? (
+                        <FaBrain />
+                      ) : filter.category === "Meditação" ? (
+                        <GiMeditation />
+                      ) : filter.category === "Lazer" ? (
+                        <FaGamepad />
+                      ) : (
+                        <HiTemplate />
+                      )}
+                    </span>
+                    <div>
+                      <h3>{filter.name}</h3>
+                      <p>{filter.description}</p>
+                      <button
+                        variant="contained"
+                        onClick={() => subscribe(filter.id)}
+                      >
+                        Subscribe
+                      </button>
+                    </div>
+                  </Li>
                 ))
             : groups
                 .filter((el) => !data?.find((element) => element.id === el.id))
                 .map((result, index) => (
-                  <li key={index}>
-                    <h3>{result.name}</h3>
-                    <p>{result.description}</p>
-                    <span>{result.category}</span>
-                    <button onClick={() => subscribe(result.id)}>
-                      Subscribe
-                    </button>
-                  </li>
+                  <Li key={index}>
+                    <span>
+                      {result.category === "Saúde" ? (
+                        <GiHealthNormal />
+                      ) : result.category === "Educação" ? (
+                        <FaBrain />
+                      ) : result.category === "Meditação" ? (
+                        <GiMeditation />
+                      ) : result.category === "Lazer" ? (
+                        <FaGamepad />
+                      ) : (
+                        <HiTemplate />
+                      )}
+                    </span>
+                    <div>
+                      <h3>{result.name}</h3>
+                      <p>{result.description}</p>
+                      <button
+                        variant="contained"
+                        onClick={() => subscribe(result.id)}
+                      >
+                        Subscribe
+                      </button>
+                    </div>
+                  </Li>
                 ))}
         </ul>
-      </C.DivColorApp>
+      </SectionFlex>
+
     </>
   );
 };
