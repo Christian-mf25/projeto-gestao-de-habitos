@@ -1,11 +1,13 @@
 import {useEffect, useState} from "react";
 import Api from "../../Services/API"
 import {useParams} from "react-router-dom";
+import EditActivity from "../EditActivity"
 
 const Activities = () => {
     const {id} = useParams();
     const [activities, setActivities] = useState([]);
     const [input, setInput] = useState([]);
+    const [update, setUpdate] = useState(false);
 
     useEffect(() => {
         Api.get(`activities/?group=${id}&page=1`)
@@ -22,6 +24,11 @@ const Activities = () => {
                 <li key={activity.id}>
                     <h3>{activity.title}</h3>
                     <p>{activity.realization_time}</p>
+                    {update ?
+                      <EditActivity activity={activity} setUpdate={setUpdate}/>
+                     : <button onClick={() => setUpdate(!update)}>
+                    Editar Atividade
+                    </button>}
                 </li>)
             :
             activities
@@ -29,6 +36,11 @@ const Activities = () => {
                 <li key={activity.id}>
                     <h3>{activity.title}</h3>
                     <p>{activity.realization_time}</p>
+                    {update ?
+                      <EditActivity activity={activity} setUpdate={setUpdate}/>
+                     : <button onClick={() => setUpdate(!update)}>
+                    Editar Atividade
+                    </button>}
                 </li>)}
         </ul>
     );
