@@ -63,7 +63,10 @@ const AddHabit = (props) => {
         <div className="popup-header">
           <h3>Criar novo hábito</h3>
           <button
-            onClick={() => props.setTrigger(false)}
+            onClick={() => {
+              update();
+              props.setTrigger(false);
+            }}
             className="cancel-btn"
           >
             X
@@ -85,68 +88,131 @@ const AddHabit = (props) => {
             <div className="toggle">
               <p>Categoria</p>
               <div>
-                <input type="radio" value="Saúde" />
+                <input
+                  {...register("category")}
+                  name="category"
+                  type="radio"
+                  value="Saúde"
+                />
                 <label>Saúde</label>
               </div>
               <div>
-                <input type="radio" value="Educação" />
+                <input
+                  {...register("category")}
+                  name="category"
+                  type="radio"
+                  value="Educação"
+                />
                 <label>Educação</label>
               </div>
               <div>
-                <input type="radio" value="Meditação" />
+                <input
+                  {...register("category")}
+                  name="category"
+                  type="radio"
+                  value="Meditação"
+                />
                 <label>Meditação</label>
               </div>
               <div>
-                <input type="radio" value="Lazer" />
+                <input
+                  {...register("category")}
+                  name="category"
+                  type="radio"
+                  value="Lazer"
+                />
                 <label>Lazer</label>
               </div>
               <div>
-                <input type="radio" value="Outro" />
+                <input
+                  {...register("category")}
+                  name="category"
+                  type="radio"
+                  value="Outro"
+                />
                 <label>Outro</label>
               </div>
             </div>
             <div className="toggle">
               <p>Dificuldade</p>
               <div>
-                <input type="radio" value="very_easy" />
+                <input
+                  {...register("difficulty")}
+                  name="difficulty"
+                  type="radio"
+                  value="very_easy"
+                />
                 <label>Very Easy</label>
               </div>
               <div>
-                <input type="radio" value="easy" />
+                <input
+                  {...register("difficulty")}
+                  name="difficulty"
+                  type="radio"
+                  value="easy"
+                />
                 <label>Easy</label>
               </div>
               <div>
-                <input type="radio" value="medium" />
+                <input
+                  {...register("difficulty")}
+                  name="difficulty"
+                  type="radio"
+                  value="medium"
+                />
                 <label>Medium</label>
               </div>
               <div>
-                <input type="radio" value="hard" />
+                <input
+                  {...register("difficulty")}
+                  name="difficulty"
+                  type="radio"
+                  value="hard"
+                />
                 <label>Hard</label>
               </div>
               <div>
-                <input type="radio" value="very_hard" />
+                <input
+                  {...register("difficulty")}
+                  name="difficulty"
+                  type="radio"
+                  value="very_hard"
+                />
                 <label>Very Hard</label>
               </div>
             </div>
             <div className="toggle">
               <p>Com qual frequência?</p>
               <div>
-                <input type="radio" value="Diário" />
+                <input
+                  {...register("frequency")}
+                  name="frequency"
+                  type="radio"
+                  value="Diário"
+                />
                 <label>Diário</label>
               </div>
               <div>
-                <input type="radio" value="Semanal" />
+                <input
+                  {...register("frequency")}
+                  name="frequency"
+                  type="radio"
+                  value="Semanal"
+                />
                 <label>Semanal</label>
               </div>
               <div>
-                <input type="radio" value="Mensal" />
+                <input
+                  {...register("frequency")}
+                  name="frequency"
+                  type="radio"
+                  value="Mensal"
+                />
                 <label>Mensal</label>
               </div>
             </div>
           </div>
-          <button type="submit" variant="contained" color="primary">
-            Adicionar
-          </button>
+          <button type="submit">Adicionar</button>
         </form>
       </div>
     </div>

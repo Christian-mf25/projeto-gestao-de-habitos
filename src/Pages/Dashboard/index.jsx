@@ -27,7 +27,7 @@ const Dashboard = () => {
   return (
     <HabitsPage>
       {token ? (
-        <div className="divHabits">
+        <div>
           <Header showD />
           <button
             className="addHabitButton"
