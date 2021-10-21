@@ -7,9 +7,26 @@ export const Container = styled.div`
     width: 380px;
     height: 152px;
   }
-`
+
+  .ul-li {
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    li.list_groups {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      margin: 20px auto;
+      margin-bottom: 0;
+    }
+  }
+`;
 
 export const DivColorApp = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: var(--color-background);
   box-sizing: border-box;
   height: 100%;
@@ -18,6 +35,7 @@ export const DivColorApp = styled.div`
 `;
 
 export const HeadSearchAndCreateGroup = styled.div`
+  width: 365px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -25,4 +43,7 @@ export const HeadSearchAndCreateGroup = styled.div`
   padding: 20px;
   height: 100px;
 
-`
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
+`;

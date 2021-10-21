@@ -1,14 +1,16 @@
 import { TextField } from "@material-ui/core";
 import { useState } from "react";
 import CardHabit from "../CardHabit";
+import { SearchHabitsDiv } from "./styles";
+import { Input } from "../../Components/Styled/style";
 
 const SearchHabit = ({ habitsRes, setIsSearching }) => {
   const [userInput, setUserInput] = useState("");
 
   return (
-    <div>
+    <SearchHabitsDiv>
       <form>
-        <TextField
+        <Input
           label="Search"
           margin="normal"
           variant="outlined"
@@ -36,7 +38,7 @@ const SearchHabit = ({ habitsRes, setIsSearching }) => {
               </div>
             ))}
       </ul>
-    </div>
+    </SearchHabitsDiv>
   );
 };
 

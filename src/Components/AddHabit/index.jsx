@@ -1,4 +1,3 @@
-import "./styles.css";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,6 +6,7 @@ import { toast } from "react-toastify";
 import { TextField } from "@material-ui/core";
 import jwtDecode from "jwt-decode";
 import { useState } from "react";
+import { Container } from "./styles";
 
 const AddHabit = (props) => {
   const [value, setValue] = useState();
@@ -58,7 +58,7 @@ const AddHabit = (props) => {
   };
 
   return props.trigger ? (
-    <div className="popup">
+    <Container>
       <div className="popup-inner">
         <div className="popup-header">
           <h3>Criar novo hábito</h3>
@@ -215,7 +215,7 @@ const AddHabit = (props) => {
           <button type="submit">Adicionar</button>
         </form>
       </div>
-    </div>
+    </Container>
   ) : (
     ""
   );

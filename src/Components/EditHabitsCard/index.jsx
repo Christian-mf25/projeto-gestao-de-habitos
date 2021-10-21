@@ -64,11 +64,14 @@ export const EditHabitsCard = ({ setEdit, id, actived, item, setActived }) => {
               X
             </ParagraphCloseModalGroup>
           </DivNameGroup>
-          <br />
-          <div>
+          <div className="info">
             <p>Category: {item.category}</p>
-            <p>Meta: 30</p>
-            <p>Atual: {item.how_much_achieved}</p>
+            <div className="goal">
+              <p>Meta: 30</p>
+              <p>Atual: {item.how_much_achieved}</p>
+            </div>
+          </div>
+          <div className="btn-div">
             <button
               onClick={() => checkIn(item)}
               className="check-in"

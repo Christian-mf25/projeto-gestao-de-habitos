@@ -22,9 +22,9 @@ const CardHabit = ({ item }) => {
                 <h3>{item.title}</h3>
                 <p>Frequency: {item.frequency}</p>
               </div>
-              <button></button>
+              <button className="gear"></button>
             </div>
-            <p>Difficulty: {item.difficulty}</p>
+            <p className="dificulty">Difficulty: {item.difficulty}</p>
             <Container>
               <Background />
               <Progress percent={item.how_much_achieved} />

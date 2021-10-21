@@ -1,15 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { GroupContext } from "../../Providers/Group";
 import { useHistory } from "react-router-dom";
-import Group from "../../Components/Group";
 import { Dialog } from "@material-ui/core";
 import * as C from "./styles.js";
 import NewGroup from "../../Components/NewGroup";
 import Api from "../../Services/API";
 import Header from "../../Components/Header";
-import { EditGroupCard } from "../../Components/EditGroup";
 import Card from "../../Components/Card/";
-import "./style.css";
 import { Input, Section, SecondaryButton } from "../../Components/Styled/style";
 
 const Groups = () => {
@@ -41,11 +38,11 @@ const Groups = () => {
 
   return (
     <Section>
-      <Header />
+      <Header showM />
       <C.DivColorApp>
         <C.Container>
           {token ? (
-            <div>
+            <div className="ul-li">
               <C.HeadSearchAndCreateGroup>
                 <Input
                   value={input}

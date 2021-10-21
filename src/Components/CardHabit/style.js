@@ -3,35 +3,54 @@ import img from "../../assets/images/config.png";
 import add from "../../assets/images/hospital-category.png";
 
 export const DivCard = styled.div`
+  display: flex;
   height: 180px;
-  width: 90%;
+  width: 365px;
   margin: 20px auto;
   background-color: var(--color-purple-card);
   border-radius: 5px;
   color: var(--color-text-primary);
 
   .divContainer {
+    margin: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    padding: 10px;
   }
 
   .add {
     background-image: url(${add});
+    background-repeat: no-repeat;
+    background-size: 90% 90%;
     width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
   }
 
   .title {
-    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    h3 {
+      padding: 0;
+    }
   }
 
-  button {
-    width: 50px;
-    height: 20px;
+  .gear {
     background-image: url(${img});
+    background-repeat: no-repeat;
+    background-size: 90% 90%;
+    width: 20px;
+    height: 20px;
     background-color: transparent;
     border: none;
-    margin-top: 10px;
+  }
+
+  .dificulty {
+    padding-left: 10px;
   }
 
   li {
@@ -46,7 +65,6 @@ export const DivCard = styled.div`
 
     p {
       min-width: 150px;
-      height: 10px;
     }
   }
 `;

@@ -5,7 +5,7 @@ import Api from "../../Services/API";
 import SearchHabit from "../../Components/SearchHabit";
 import { Redirect } from "react-router";
 import Header from "../../Components/Header";
-import { HabitsPage } from "./styles";
+import { ColorDiv, HabitsContainerDiv, HabitsPage } from "./styles";
 
 const Dashboard = () => {
   const [habitsRes, setHabitsRes] = useState([]);
@@ -27,26 +27,28 @@ const Dashboard = () => {
   return (
     <HabitsPage>
       {token ? (
-        <div>
+        <HabitsContainerDiv>
           <Header showD />
-          <button
-            className="addHabitButton"
-            onClick={() => setButtonPopup(!buttonPopup)}
-          >
-            Adicionar hábito
-          </button>
-          <SearchHabit
-            getHabits={getHabits}
-            habitsRes={habitsRes}
-            setIsSearching={setIsSearching}
-          />
-          <AddHabit
-            setButtonPopup={setButtonPopup}
-            trigger={buttonPopup}
-            setTrigger={setButtonPopup}
-          ></AddHabit>
-          {!isSearching && <Habits />}
-        </div>
+          <ColorDiv>
+            <button
+              className="addHabitButton"
+              onClick={() => setButtonPopup(!buttonPopup)}
+            >
+              Adicionar hábito
+            </button>
+            <SearchHabit
+              getHabits={getHabits}
+              habitsRes={habitsRes}
+              setIsSearching={setIsSearching}
+            />
+            <AddHabit
+              setButtonPopup={setButtonPopup}
+              trigger={buttonPopup}
+              setTrigger={setButtonPopup}
+            ></AddHabit>
+            {!isSearching && <Habits />}
+          </ColorDiv>
+        </HabitsContainerDiv>
       ) : (
         <Redirect to="/login" />
       )}
