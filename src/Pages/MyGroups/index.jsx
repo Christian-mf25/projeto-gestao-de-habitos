@@ -7,7 +7,7 @@ import NewGroup from "../../Components/NewGroup";
 import Api from "../../Services/API";
 import Header from "../../Components/Header";
 import Card from "../../Components/Card/";
-import { Input, Section, SecondaryButton } from "../../Components/Styled/style";
+import { Input, SecondaryButton } from "../../Components/Styled/style";
 
 const Groups = () => {
   const history = useHistory();
