@@ -10,6 +10,7 @@ import Header from "../../Components/Header";
 import { EditGroupCard } from "../../Components/EditGroup";
 import Card from "../../Components/Card/";
 import "./style.css";
+import { Input, Section, SecondaryButton } from "../../Components/Styled/style";
 
 const Groups = () => {
   const history = useHistory();
@@ -39,49 +40,64 @@ const Groups = () => {
   };
 
   return (
-    <C.Container>
+    <Section>
       <Header />
-      {token ? (
-        <div>
-          <input
-            value={input}
-            placeholder="Search Group"
-            onChange={(e) => setInput(e.target.value)}
-          ></input>
-          <button onClick={handleClickInsertModal}>Criar grupo</button>
-          <ul className="box_list_groups">
-            {input.length > 0
-              ? data
-                  .filter((result) =>
-                    result.name.toLowerCase().includes(input.toLowerCase())
-                  )
-                  .map((filter, index) => (
-                    <li className="list_groups" key={index}>
-                      <Card item={filter} />
-                    </li>
-                  ))
-              : data?.map((item, index) => (
-                  <li className="list_groups" key={index}>
-                    <Card item={item} />
-                  </li>
-                ))}
-          </ul>
-          <div>
-            <Dialog
-              open={insertModal}
-              onClose={handleClickCloseModal}
-              aria-labelledby="responsive-dialog-title"
-            >
-              {insertModal && (
-                <NewGroup handleClickInsertModal={handleClickCloseModal} />
-              )}
-            </Dialog>
-          </div>
-        </div>
-      ) : (
-        history.push("/login")
-      )}
-    </C.Container>
+      <C.DivColorApp>
+        <C.Container>
+          {token ? (
+            <div>
+              <C.HeadSearchAndCreateGroup>
+                <Input
+                  value={input}
+                  size="small"
+                  variant="outlined"
+                  margin="dense"
+                  placeholder="Search Group"
+                  onChange={(e) => setInput(e.target.value)}
+                />
+                <SecondaryButton
+                  variant="contained"
+                  size="medium"
+                  onClick={handleClickInsertModal}
+                >
+                  Create Group
+                </SecondaryButton>
+              </C.HeadSearchAndCreateGroup>
+              <ul className="box_list_groups">
+                {input.length > 0
+                  ? data
+                      .filter((result) =>
+                        result.name.toLowerCase().includes(input.toLowerCase())
+                      )
+                      .map((filter, index) => (
+                        <li className="list_groups" key={index}>
+                          <Card item={filter} />
+                        </li>
+                      ))
+                  : data?.map((item, index) => (
+                      <li className="list_groups" key={index}>
+                        <Card item={item} />
+                      </li>
+                    ))}
+              </ul>
+              <div>
+                <Dialog
+                  open={insertModal}
+                  onClose={handleClickCloseModal}
+                  aria-labelledby="responsive-dialog-title"
+                >
+                  {insertModal && (
+                    <NewGroup handleClickInsertModal={handleClickCloseModal} />
+                  )}
+                </Dialog>
+              </div>
+            </div>
+          ) : (
+            history.push("/login")
+          )}
+        </C.Container>
+      </C.DivColorApp>
+    </Section>
   );
 };
 

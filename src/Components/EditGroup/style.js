@@ -7,6 +7,12 @@ export const ContainerEditGroup = styled.div`
     width: 350px;
     border-radius: 5px;
     background-color: var(--color-purple-card);
+    
+    box-sizing: border-box;
+`
+
+export const ContainedGroup = styled.div`
+    padding-left: 20px;
 `
 
 export const DivNameGroup = styled.div`

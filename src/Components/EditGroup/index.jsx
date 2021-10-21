@@ -9,7 +9,9 @@ import {
   ContainerEditGroup,
   DivNameGroup,
   TextFieldDescriptionGroup,
+  ContainedGroup,
 } from "./style";
+import { PrimaryButton, SecondaryButton } from "../../Components/Styled/style";
 
 import { ParagraphCloseModalGroup } from "./style";
 
@@ -43,6 +45,7 @@ export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
     console.log("token", token);
     console.log("description", data.description);
     console.log("id", item.id);
+
     Api.patch(
       `/groups/${item.id}/`,
       {
@@ -75,20 +78,29 @@ export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
             </ParagraphCloseModalGroup>
           </DivNameGroup>
           <br />
-          <div>
-            <form onSubmit={handleSubmit(patchGroup)}>
-              <TextFieldDescriptionGroup
-                key={item.id}
-                id="outlined-helperText"
-                label="Description"
-                defaultValue={item.description || ""}
-                {...register("description")}
-              />
-              <p>{item.id}</p>
-              <button type="submit">Salvar</button>
-              <button>Excluir Grupo</button>
-            </form>
-          </div>
+          <ContainedGroup>
+            <div>
+              <p>Category:</p>
+              <p>{item.category}</p>
+              <br />
+              <br />
+
+              <form onSubmit={handleSubmit(patchGroup)}>
+                <TextFieldDescriptionGroup
+                  key={item.id}
+                  id="outlined-helperText"
+                  label="Description"
+                  defaultValue={item.description || ""}
+                  {...register("description")}
+                />
+                {/* <button type="submit">Salvar</button> */}
+                <div className="area_buttons">
+                  <PrimaryButton type="submit">Salvar</PrimaryButton>
+                  <SecondaryButton type="submit">Excluir Grupo</SecondaryButton>
+                </div>
+              </form>
+            </div>
+          </ContainedGroup>
         </ContainerEditGroup>
       </div>
     </>

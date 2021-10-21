@@ -9,7 +9,7 @@ export const DivColor = styled.div`
 
   background-color: var(--color-background);
 
-  height: 100vh;
+  height: 100%;
   width: 100vw;
 `;
 
