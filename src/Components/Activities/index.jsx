@@ -2,12 +2,24 @@ import {useEffect, useState} from "react";
 import Api from "../../Services/API"
 import {useParams} from "react-router-dom";
 import EditActivity from "../EditActivity"
+import { toast } from "react-toastify";
 
 const Activities = () => {
     const {id} = useParams();
     const [activities, setActivities] = useState([]);
     const [input, setInput] = useState([]);
     const [update, setUpdate] = useState(false);
+    const token = JSON.parse(localStorage.getItem("@Productive:token"));
+
+    const deleteActivity = (id) => {
+      Api.delete(`activities/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then(() => {
+        toast.success("Atividade removida");
+      });
+    };
 
     useEffect(() => {
         Api.get(`activities/?group=${id}&page=1`)
@@ -29,6 +41,7 @@ const Activities = () => {
                      : <button onClick={() => setUpdate(!update)}>
                     Editar Atividade
                     </button>}
+                    <button onClick={() => deleteActivity(activity.id)}>Deletar</button>
                 </li>)
             :
             activities
@@ -41,6 +54,7 @@ const Activities = () => {
                      : <button onClick={() => setUpdate(activity.id)}>
                     Editar Atividade
                     </button>}
+                    <button onClick={() => deleteActivity(activity.id)}>Deletar</button>
                 </li>)}
         </ul>
     );
