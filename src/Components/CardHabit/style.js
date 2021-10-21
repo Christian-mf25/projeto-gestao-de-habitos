@@ -5,7 +5,7 @@ import add from "../../assets/images/hospital-category.png";
 export const DivCard = styled.div`
   display: flex;
   height: 180px;
-  width: 365px;
+  width: 265px;
   margin: 20px auto;
   background-color: var(--color-purple-card);
   border-radius: 5px;
@@ -67,12 +67,22 @@ export const DivCard = styled.div`
       min-width: 150px;
     }
   }
+
+  @media screen and (min-width: 768px) {
+    width: 365px;
+  }
 `;
 
 export const Container = styled.div`
   height: 7px;
-  width: 100%;
+  width: 93%;
   position: relative;
+  margin-left: 9.5px;
+
+  @media screen and (min-width: 768px) {
+    width: 95%;
+    margin-left: 9.5px;
+  }
 `;
 
 export const BaseBox = styled.div`

@@ -1,10 +1,14 @@
-import { TextField } from "@material-ui/core";
 import { useState } from "react";
 import CardHabit from "../CardHabit";
 import { SearchHabitsDiv } from "./styles";
 import { Input } from "../../Components/Styled/style";
 
-const SearchHabit = ({ habitsRes, setIsSearching }) => {
+const SearchHabit = ({
+  habitsRes,
+  setIsSearching,
+  setButtonPopup,
+  buttonPopup,
+}) => {
   const [userInput, setUserInput] = useState("");
 
   return (
@@ -20,6 +24,12 @@ const SearchHabit = ({ habitsRes, setIsSearching }) => {
           onChange={(e) => setUserInput(e.target.value)}
         />
       </form>
+      <button
+        className="addHabitButton"
+        onClick={() => setButtonPopup(!buttonPopup)}
+      >
+        Adicionar hábito
+      </button>
       <ul>
         {userInput.length > 0
           ? (setIsSearching(true),

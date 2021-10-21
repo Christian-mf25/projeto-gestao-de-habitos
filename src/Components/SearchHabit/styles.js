@@ -6,7 +6,7 @@ export const SearchHabitsDiv = styled.div`
   align-items: center;
 
   form {
-    width: 365px;
+    width: 265px;
     div {
       width: 100%;
       label {
@@ -15,10 +15,24 @@ export const SearchHabitsDiv = styled.div`
     }
   }
 
+  .addHabitButton {
+    max-width: 265px;
+  }
+
   ul {
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  @media screen and (min-width: 768px) {
+    form {
+      width: 365px;
+    }
+
+    .addHabitButton {
+      max-width: 365px;
+    }
   }
 `;

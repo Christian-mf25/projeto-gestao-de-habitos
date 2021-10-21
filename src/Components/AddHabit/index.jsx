@@ -6,7 +6,8 @@ import { toast } from "react-toastify";
 import { TextField } from "@material-ui/core";
 import jwtDecode from "jwt-decode";
 import { useState } from "react";
-import { Container } from "./styles";
+import { Container, TertiaryButton } from "./styles";
+import { PrimaryButton, SecondaryButton } from "./styles";
 
 const AddHabit = (props) => {
   const [value, setValue] = useState();
@@ -212,7 +213,18 @@ const AddHabit = (props) => {
               </div>
             </div>
           </div>
-          <button type="submit">Adicionar</button>
+          <PrimaryButton className="addBtn" type="submit">
+            Criar
+          </PrimaryButton>
+          <TertiaryButton
+            className="cancelBtn"
+            onclick={() => {
+              update();
+              props.setTrigger(!props.trigger);
+            }}
+          >
+            Cancelar
+          </TertiaryButton>
         </form>
       </div>
     </Container>
