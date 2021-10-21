@@ -63,7 +63,6 @@ export const BaseBox = styled.div`
   left: 0;
   top: 0;
   border-radius: 3px;
-  transition: width 10s ease-in-out;
 `;
 
 export const Background = styled(BaseBox)`
@@ -78,5 +77,5 @@ export const Progress = styled(BaseBox)`
     #6d95fb 51%,
     #0bd6f7 100%
   );
-  width: ${({ percent }) => percent}%;
+  width: ${({ percent }) => (percent * 100) / 30}%;
 `;
