@@ -6,7 +6,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   flex: 1;
-  background: linear-gradient(to bottom, #2B0932 0%, #4E116A 100%);
+  background: linear-gradient(to bottom, #2b0932 0%, #4e116a 100%);
   padding: 18px;
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@ export const Header = styled.header`
     width: 76px;
   }
 
-  @media screen and (min-width: 720px) {
+  @media (min-width: 720px) {
     flex: 1;
     padding: 20px 48px 0 48px;
     align-items: center;
@@ -38,15 +38,15 @@ export const ButtonsDiv = styled.div`
     border-radius: 5px;
     border: none;
     color: #fff;
-		background-color: #7580f9;
-		cursor: pointer;
-		:hover {
+    background-color: #7580f9;
+    cursor: pointer;
+    :hover {
       background-color: #7580f9;
       filter: brightness(0.8);
     }
   }
 
-  @media screen and (min-width: 720px) {
+  @media (min-width: 720px) {
     button {
       font-size: inherit;
     }
@@ -57,6 +57,7 @@ export const HomeContainer = styled.main`
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
 `;
 
 export const FirstSection = styled.section`
@@ -256,6 +257,7 @@ export const Footer = styled.footer`
     padding: 0 10px;
     display: flex;
     justify-content: center;
+		margin: 40px auto;
     div {
       width: 20%;
       display: flex;
@@ -266,6 +268,18 @@ export const Footer = styled.footer`
     p {
       text-align: center;
     }
+
+    h4 {
+      margin-bottom: 5px;
+    }
+  }
+
+  section.copy {
+    padding-top: 20px;
+		padding-bottom: 20px;
+		margin: 0;
+		background-color: var(--color-purple-card);
+		color: var(--color-text-primary);
   }
 
   img {

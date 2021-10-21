@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
 import * as yup from "yup";
-import { Section, Input, PrimaryButton, IMG } from "../Styled/style";
+import { Section, Input, PrimaryButton, IMG, SecondaryButton } from "../Styled/style";
 import { DivColor, Container, Form } from "./style";
 
 const RegisterForm = () => {
@@ -123,14 +123,13 @@ const RegisterForm = () => {
 
             <p>Already has an account?</p>
 
-            <Button
+            <SecondaryButton
               variant="contained"
               size="medium"
-              style={{ backgroundColor: "#363153", color: "#9593a4" }}
               onClick={() => sendTo("/login")}
             >
               Login
-            </Button>
+            </SecondaryButton>
           </Form>
         </Container>
       </DivColor>

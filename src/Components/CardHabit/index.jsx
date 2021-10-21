@@ -9,7 +9,7 @@ const CardHabit = ({ item }) => {
   const myClickTeste = () => {
     setActived(true);
   };
-  console.log("item", item);
+
   return (
     <>
       <EditHabitsCard actived={actived} setActived={setActived} item={item} />
