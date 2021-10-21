@@ -1,10 +1,21 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const DivCard = styled.div`
-    height: 150px;
-    width: 90%;
-    margin: 20px auto;
-    background-color: var(--color-purple-card);
-    border-radius: 5px;
-    color: var(--color-text-primary);
-`
+  height: 150px;
+  width: 365px;
+  margin: 20px auto;
+  margin-bottom: 0;
+  background-color: var(--color-purple-card);
+  border-radius: 5px;
+  color: var(--color-text-primary);
+
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
+`;
+
+export const ContainerEditGroupCard = styled.div`
+  .hidden {
+    display: none;
+  }
+`;

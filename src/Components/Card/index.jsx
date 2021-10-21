@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { EditGroupCard } from "../EditGroup";
 import Group from "../Group";
-import { DivCard } from "./style";
-import "./style.css";
+import { ContainerEditGroupCard, DivCard } from "./style";
+// import "./style.css";
 
 // COMPONENTE PARA RENDERIZAR CADA CARD DOS HABITS / GROUPS / SEARCH-GROUPS
 const Card = ({ item }) => {
@@ -12,7 +12,7 @@ const Card = ({ item }) => {
     setActived(true);
   };
   return (
-    <>
+    <ContainerEditGroupCard>
       <EditGroupCard
         key={item.id}
         actived={actived}
@@ -26,7 +26,7 @@ const Card = ({ item }) => {
           </div>
         </>
       </DivCard>
-    </>
+    </ContainerEditGroupCard>
   );
 };
 
