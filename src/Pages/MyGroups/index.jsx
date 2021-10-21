@@ -21,16 +21,22 @@ const Groups = () => {
 
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
-  useEffect(() => {
+  const handleClickInsertModal = () => {
+    setInsertModal(!insertModal);
     Api.get("/groups/", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => setGroup(response.data))
       .catch((err) => console.log(err));
-  }, [insertModal]);
-
-  const handleClickInsertModal = () => setInsertModal(!insertModal);
-  const handleClickCloseModal = () => setInsertModal(false);
+  };
+  const handleClickCloseModal = () => {
+    setInsertModal(false);
+    Api.get("/groups/", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => setGroup(response.data))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <C.Container>
