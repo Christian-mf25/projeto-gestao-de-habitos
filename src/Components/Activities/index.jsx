@@ -36,9 +36,9 @@ const Activities = () => {
                 <li key={activity.id}>
                     <h3>{activity.title}</h3>
                     <p>{activity.realization_time}</p>
-                    {update ?
+                    {update === activity.id ?
                       <EditActivity activity={activity} setUpdate={setUpdate}/>
-                     : <button onClick={() => setUpdate(!update)}>
+                     : <button onClick={() => setUpdate(activity.id)}>
                     Editar Atividade
                     </button>}
                 </li>)}
