@@ -63,7 +63,7 @@ const RegisterForm = () => {
     <Section>
       <DivColor>
 
-				<IMG src={logo} alt={logo} />
+				<IMG src={logo} alt={logo} onClick={() => sendTo("/")}/>
         <Container>
           <Form onSubmit={handleSubmit(handleForm)}>
             <div>
