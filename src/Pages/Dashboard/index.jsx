@@ -20,26 +20,22 @@ const Dashboard = () => {
       },
     }).then((res) => setHabitsRes(res.data));
   };
-
   useEffect(() => {
     getHabits();
   }, []);
+
   return (
     <HabitsPage>
       {token ? (
         <HabitsContainerDiv>
           <Header showD />
           <ColorDiv>
-            <button
-              className="addHabitButton"
-              onClick={() => setButtonPopup(!buttonPopup)}
-            >
-              Adicionar hábito
-            </button>
             <SearchHabit
               getHabits={getHabits}
               habitsRes={habitsRes}
               setIsSearching={setIsSearching}
+              setButtonPopup={setButtonPopup}
+              buttonPopup={buttonPopup}
             />
             <AddHabit
               setButtonPopup={setButtonPopup}
