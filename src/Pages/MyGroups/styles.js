@@ -13,6 +13,7 @@ export const DivColorApp = styled.div`
   background-color: var(--color-background);
   box-sizing: border-box;
   height: 100%;
+  min-height: 100vh;
   width: 100%;
 `;
 

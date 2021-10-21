@@ -10,8 +10,9 @@ import {
   DivNameGroup,
   TextFieldDescriptionGroup,
   ContainedGroup,
+  SecondaryButton,
 } from "./style";
-import { PrimaryButton, SecondaryButton } from "../../Components/Styled/style";
+import { PrimaryButton } from "../../Components/Styled/style";
 
 import { ParagraphCloseModalGroup } from "./style";
 
@@ -41,11 +42,12 @@ export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
   })
     .then((response) => console.log(response))
     .catch((err) => console.log(err)); */
-  const patchGroup = (data) => {
+  const patchGroup = (data, event) => {
     console.log("token", token);
     console.log("description", data.description);
     console.log("id", item.id);
-
+    console.log(event.target.elements.VictorVarela.name);
+    console.log(event.target);
     Api.patch(
       `/groups/${item.id}/`,
       {
@@ -62,13 +64,31 @@ export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
         toast.success("Descrição atualizada!");
       })
       .catch((err) => console.log("erro", err));
+    setActived(false);
+  };
+
+  const deleteGroup = () => {
+    Api.delete(`/groups/${item.id}/unsubscribe/`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(() => {
+        toast.success("Grupo Apagado!");
+      })
+      .catch((err) => console.log("erro", err));
+
+    setActived(false);
   };
 
   return (
     <>
       <div
         /* onSubmit={handleSubmit(onSaveEdition)} */
-        className={actived ? "editGroupTrue" : "editGroupFalse"}
+        className={
+          actived ? "editGroupTrue editGroup" : "editGroupFalse editGroup"
+        }
       >
         <ContainerEditGroup>
           <DivNameGroup>
@@ -95,10 +115,18 @@ export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
                 />
                 {/* <button type="submit">Salvar</button> */}
                 <div className="area_buttons">
-                  <PrimaryButton type="submit">Salvar</PrimaryButton>
-                  <SecondaryButton type="submit">Excluir Grupo</SecondaryButton>
+                  <PrimaryButton type="submit" name="VictorVarela">
+                    Salvar
+                  </PrimaryButton>
                 </div>
               </form>
+              <SecondaryButton
+                name="AnnaLuiza"
+                type="submit"
+                onClick={() => deleteGroup()}
+              >
+                Excluir Grupo
+              </SecondaryButton>
             </div>
           </ContainedGroup>
         </ContainerEditGroup>

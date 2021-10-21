@@ -1,4 +1,4 @@
-import { TextField } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 import styled from 'styled-components';
 
 export const ContainerEditGroup = styled.div`
@@ -44,6 +44,23 @@ export const TextFieldDescriptionGroup = styled(TextField)({
         color: '#a788b5',
     },
     'label': {
-        color: '#7580f9'
+        color: '#7580f9',
     }
 })
+
+export const SecondaryButton = styled(Button)`
+  &.MuiButton-root {
+    background-color: #363153;
+    color: var(--color-text-primary);
+    float: right;
+    top: -44px;
+    left: -60px;
+    padding: 10px 25px;
+    border-radius: 5px;
+
+    :hover {
+      background-color: #363153;
+      filter: brightness(0.9);
+    }
+  }
+`;
