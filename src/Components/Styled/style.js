@@ -30,6 +30,18 @@ export const SecondaryButton = styled(Button)`
   }
 `;
 
+export const TertiaryButton = styled(Button)`
+  &.MuiButton-root {
+    background-color: #7580f9;
+    color: var(--color-text-primary);
+
+    :hover {
+      background-color: #7580f9;
+      filter: brightness(0.9);
+    }
+  }
+`;
+
 export const Input = styled(TextField)`
   &.MuiTextField-root {
     input {
@@ -40,8 +52,8 @@ export const Input = styled(TextField)`
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
     input:-webkit-autofill:active {
-      -webkit-box-shadow: 0 0 0 30px #261d2a inset ;
-			-webkit-text-fill-color: #fff;
+      -webkit-box-shadow: 0 0 0 30px #261d2a inset;
+      -webkit-text-fill-color: #fff;
     }
 
     fieldset {
@@ -60,5 +72,5 @@ export const IMG = styled.img`
   height: 123px;
 
   margin-bottom: 50px;
-	cursor: pointer;
+  cursor: pointer;
 `;
