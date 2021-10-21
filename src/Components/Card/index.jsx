@@ -2,7 +2,6 @@ import { useState } from "react";
 import { EditGroupCard } from "../EditGroup";
 import Group from "../Group";
 import { ContainerEditGroupCard, DivCard } from "./style";
-// import "./style.css";
 
 // COMPONENTE PARA RENDERIZAR CADA CARD DOS HABITS / GROUPS / SEARCH-GROUPS
 const Card = ({ item }) => {
