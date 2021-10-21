@@ -11,10 +11,11 @@ export const GlobalStyles = createGlobalStyle`
         --color-text: #a788b5;
 				--color-background: rgba(24, 24, 24, 0.8);
     }
-    body, p {
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    body, p, li, ul {
+      list-style: none;  
+			margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     }
 
     body:before {
@@ -32,6 +33,15 @@ export const GlobalStyles = createGlobalStyle`
         -o-background-size: cover;
         background-size: cover;
     }
+		.opacity{
+			background-color: var(--color-background);
+			width: 100%;
+			min-height: 100vh;
+			max-height: 100%;
+
+			/* position: fixed; */
+			/* z-index: -11; */
+		}
 
 
     code {

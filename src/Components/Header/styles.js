@@ -35,4 +35,22 @@ export const Toolbar = styled.header`
     background-color: var(--color-text-primary);
     border-radius: 17% 83% 83% 17% / 45% 50% 50% 55%;
   }
+
+  .top_header {
+    display: flex;
+    align-items: center;
+  }
+
+  .logout {
+    padding: 10px 25px;
+    position: absolute;
+    right: 0;
+    color: var(--color-title);
+		font-size: 30px;
+    span {
+      width: 55px;
+      height: 4px;
+      background-color: transparent;
+    }
+  }
 `;
