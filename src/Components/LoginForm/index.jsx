@@ -11,7 +11,7 @@ import {
   SecondaryButton,
   Section,
   Input,
-	IMG
+  IMG,
 } from "../Styled/style";
 
 const LoginForm = () => {
@@ -55,7 +55,7 @@ const LoginForm = () => {
   return (
     <Section>
       <DivColor>
-        <IMG src={logo} alt={logo} />
+        <IMG src={logo} alt={logo} onClick={() => sendTo("/")} />
 
         <Container>
           <Form onSubmit={handleSubmit(handleForm)}>

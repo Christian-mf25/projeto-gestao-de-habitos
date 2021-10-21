@@ -62,8 +62,7 @@ const RegisterForm = () => {
   return (
     <Section>
       <DivColor>
-
-				<IMG src={logo} alt={logo} onClick={() => sendTo("/")}/>
+        <IMG src={logo} alt={logo} onClick={() => sendTo("/")} />
         <Container>
           <Form onSubmit={handleSubmit(handleForm)}>
             <div>
@@ -121,7 +120,7 @@ const RegisterForm = () => {
             <PrimaryButton type="submit" variant="contained" size="medium">
               Register
             </PrimaryButton>
-						
+
             <p>Already has an account?</p>
 
             <Button
