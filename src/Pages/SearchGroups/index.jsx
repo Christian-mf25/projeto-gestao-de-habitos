@@ -1,24 +1,21 @@
-import Header from "../../Components/Header";
-import { GroupsContext } from "../../Providers/SearchGroups";
-import { useContext, useState } from "react";
-import Api from "../../Services/API";
-import { toast } from "react-toastify";
-import { GroupContext } from "../../Providers/Group";
-import { Input } from "../../Components/Styled/style";
-import { SectionFlex, Li } from "./style";
-
 import { GiHealthNormal, GiMeditation } from "react-icons/gi";
+import { GroupsContext } from "../../Providers/SearchGroups";
+import { Input } from "../../Components/Styled/style";
+import { GroupContext } from "../../Providers/Group";
 import { FaBrain, FaGamepad } from "react-icons/fa";
+import Header from "../../Components/Header";
+import { useContext, useState } from "react";
 import { HiTemplate } from "react-icons/hi";
+import { SectionFlex, Li } from "./style";
+import { toast } from "react-toastify";
+import Api from "../../Services/API";
 
 const SearchGroups = () => {
   const { groups } = useContext(GroupsContext);
   const { data } = useContext(GroupContext);
   const [input, setInput] = useState("");
-  const [token, setToken] = useState(() => {
-    const localToken = localStorage.getItem("@Productive:token") || "";
-    return JSON.parse(localToken);
-  });
+	const token = JSON.parse(localStorage.getItem("@Productive:token")) || []
+
   const subscribe = (id) => {
     Api.post(`/groups/${id}/subscribe/`, id, {
       headers: {
@@ -104,7 +101,6 @@ const SearchGroups = () => {
                 ))}
         </ul>
       </SectionFlex>
-
     </>
   );
 };

@@ -27,7 +27,7 @@ export const DivColorApp = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--color-background);
+  /* background-color: var(--color-background); */
   box-sizing: border-box;
   height: 100%;
   min-height: 100vh;

@@ -37,7 +37,7 @@ const Groups = () => {
   };
 
   return (
-    <Section>
+    <>
       <Header showM />
       <C.DivColorApp>
         <C.Container>
@@ -94,7 +94,7 @@ const Groups = () => {
           )}
         </C.Container>
       </C.DivColorApp>
-    </Section>
+    </>
   );
 };
 
