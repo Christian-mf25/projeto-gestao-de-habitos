@@ -21,19 +21,9 @@ const Groups = () => {
 
   const handleClickInsertModal = () => {
     setInsertModal(!insertModal);
-    Api.get("/groups/", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => setGroup(response.data))
-      .catch((err) => console.log(err));
   };
   const handleClickCloseModal = () => {
     setInsertModal(false);
-    Api.get("/groups/", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => setGroup(response.data))
-      .catch((err) => console.log(err));
   };
 
   return (
@@ -61,6 +51,7 @@ const Groups = () => {
                   Create Group
                 </SecondaryButton>
               </C.HeadSearchAndCreateGroup>
+
               <ul className="box_list_groups">
                 {input.length > 0
                   ? data

@@ -6,6 +6,7 @@ export const GroupContext = createContext([]);
 
 export const GroupProvider = ({ children }) => {
   const [data, setData] = useState([]);
+  const [consultApi, setConsultApi] = useState(false);
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
   useEffect(() => {
     Api.get("/groups/subscriptions/", {
@@ -15,7 +16,7 @@ export const GroupProvider = ({ children }) => {
     })
       .then((response) => setData(response.data))
       .catch((err) => console.log("error: ", err));
-  });
+  }, [consultApi]);
 
   const handleEditGroup = (info, id) => {
     Api.patch(`/groups/${id}/`, info, {
@@ -28,7 +29,9 @@ export const GroupProvider = ({ children }) => {
   };
 
   return (
-    <GroupContext.Provider value={{ data, handleEditGroup }}>
+    <GroupContext.Provider
+      value={{ data, handleEditGroup, consultApi, setConsultApi }}
+    >
       {children}
     </GroupContext.Provider>
   );
