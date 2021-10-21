@@ -14,7 +14,6 @@ export const HabitsPage = styled.div`
 `;
 
 export const HabitsContainerDiv = styled.div`
-  /* background-color: var(--color-background); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,6 +23,6 @@ export const ColorDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(24, 24, 24, 0.8);
+  /* background-color: rgba(24, 24, 24, 0.8); */
   width: 100%;
 `;
