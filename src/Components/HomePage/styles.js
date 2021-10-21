@@ -6,7 +6,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   flex: 1;
-  background-color: var(--color-purple-card);
+  background: linear-gradient(to bottom, #2B0932 0%, #4E116A 100%);
   padding: 18px;
   display: flex;
   align-items: center;
@@ -18,7 +18,7 @@ export const Header = styled.header`
 
   @media screen and (min-width: 720px) {
     flex: 1;
-    padding: 24px 48px;
+    padding: 20px 48px 0 48px;
     align-items: center;
     justify-content: space-between;
     display: flex;
@@ -38,7 +38,12 @@ export const ButtonsDiv = styled.div`
     border-radius: 5px;
     border: none;
     color: #fff;
-    background-image: linear-gradient(90deg, #a40ff2, #6d95fb, #0bd6f7);
+		background-color: #7580f9;
+		cursor: pointer;
+		:hover {
+      background-color: #7580f9;
+      filter: brightness(0.8);
+    }
   }
 
   @media screen and (min-width: 720px) {
