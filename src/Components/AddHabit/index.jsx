@@ -73,7 +73,6 @@ const AddHabit = (props) => {
             X
           </button>
         </div>
-        {props.children}
         <form className="radioContainer" onSubmit={handleSubmit(submitForm)}>
           <TextField
             label="Title"
@@ -218,8 +217,7 @@ const AddHabit = (props) => {
           </PrimaryButton>
           <TertiaryButton
             className="cancelBtn"
-            onclick={() => {
-              update();
+            onClick={() => {
               props.setTrigger(!props.trigger);
             }}
           >
