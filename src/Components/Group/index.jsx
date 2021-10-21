@@ -25,8 +25,8 @@ const Group = ({ group }) => {
       <p>Description: {group.description}</p>
       <p>{group.category}</p>
 
-      <button onClick={deleteGroup}>Deletar</button>
-      <button>Editar grupo</button>
+      {/* <button onClick={deleteGroup}>Deletar</button>
+      <button>Editar grupo</button> */}
     </C.Container>
   );
 };

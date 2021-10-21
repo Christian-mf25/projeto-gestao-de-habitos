@@ -7,6 +7,8 @@ import * as C from "./styles.js";
 import NewGroup from "../../Components/NewGroup";
 import Api from "../../Services/API";
 import Header from "../../Components/Header";
+import { EditGroupCard } from "../../Components/EditGroup";
+import Card from "../../Components/Card/";
 
 const Groups = () => {
   const history = useHistory();
@@ -34,6 +36,7 @@ const Groups = () => {
       <Header />
       {token ? (
         <div>
+          
           <button onClick={handleClickInsertModal}>Criar grupo</button>
           <input
             value={input}
@@ -55,9 +58,7 @@ const Groups = () => {
                   ))
               : data?.map((item, index) => (
                   <div key={index}>
-                    <li key={item.id}>
-                      <Group group={item} />
-                    </li>
+                    <Card item={item} />
                   </div>
                 ))}
           </ul>
