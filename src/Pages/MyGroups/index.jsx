@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { GroupContext } from "../../Providers/Group";
 import { useHistory } from "react-router-dom";
 import { Dialog } from "@material-ui/core";
@@ -45,6 +45,7 @@ const Groups = () => {
             <div className="ul-li">
               <C.HeadSearchAndCreateGroup>
                 <Input
+                  label="Search Group"
                   value={input}
                   size="small"
                   variant="outlined"
