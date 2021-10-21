@@ -9,22 +9,46 @@ export const NewGroupCont = styled.div`
   align-items: center;
   background-color: var(--color-purple-card);
 
+  option {
+    background-color: var(--color-purple-card);
+  }
+
+  select {
+    width: 210px;
+    padding: 5px;
+    background-color: transparent;
+    color: var(--color-title);
+    border-radius: 4px;
+  }
+
   .top {
     width: 100%;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    svg {
+    border-bottom: 1px solid var(--color-title) svg {
+      color: var(--color-title);
       font-size: 30px;
+    }
+
+    svg {
       color: var(--color-title);
     }
   }
 
   .btn-div {
+    width: 210px;
     display: flex;
+    align-items: center;
+    justify-content: space-around;
+    button {
+      width: 45%;
+      margin-top: 10px;
+    }
   }
 
   h1 {
+    font-size: 18px;
     width: 100%;
     margin: 0;
     color: var(--color-text-primary);
@@ -39,10 +63,6 @@ export const NewGroupCont = styled.div`
     }
   }
 
-  button {
-    margin: 10px;
-  }
-
   .cont-div {
     width: 100%;
     display: flex;
@@ -55,16 +75,15 @@ export const NewGroupCont = styled.div`
       align-items: center;
 
       input,
-      select,
       label {
         width: 200px;
         padding: 5px;
         background-color: transparent;
-        color: var(--color-text-primary);
+        color: var(--color-title);
       }
       label {
-        text-align: center;
-        color: var(--color-text-primary);
+        text-align: left;
+        padding-left: 0;
       }
     }
   }

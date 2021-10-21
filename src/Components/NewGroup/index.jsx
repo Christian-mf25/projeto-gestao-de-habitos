@@ -5,7 +5,7 @@ import Api from "../../Services/API";
 import { toast } from "react-toastify";
 import { NewGroupCont } from "./styles";
 import { Input, PrimaryButton, SecondaryButton } from "../Styled/style";
-import { GrFormClose } from "react-icons/gr";
+import { AiOutlineClose } from "react-icons/ai";
 
 const NewGroup = ({ handleClickInsertModal }) => {
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
@@ -47,8 +47,10 @@ const NewGroup = ({ handleClickInsertModal }) => {
     <NewGroupCont>
       <div className="cont-div">
         <div className="top">
-          <h1>Novo grupo</h1>
-          <GrFormClose type="button" onClick={handleClickInsertModal} />
+          <h1>Adicionar grupo</h1>
+          <span>
+            <AiOutlineClose type="button" onClick={handleClickInsertModal} />
+          </span>
         </div>
         <form onSubmit={handleSubmit(submitFunction)}>
           {errors?.title?.message}
