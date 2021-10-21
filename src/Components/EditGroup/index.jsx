@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { useGroup } from "../../Providers/Group";
+
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,7 +17,6 @@ import { PrimaryButton } from "../../Components/Styled/style";
 import { ParagraphCloseModalGroup } from "./style";
 
 export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
-  const { handleEditGroup } = useGroup();
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
   const schema = yup.object().shape({
@@ -32,22 +31,7 @@ export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSaveEdition = (values) => {
-    //handleEditGroup(values, id);
-    //setEdit(false);
-  };
-
-  /* Api.get(`/groups/${id}/`, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-    .then((response) => console.log(response))
-    .catch((err) => console.log(err)); */
   const patchGroup = (data, event) => {
-    console.log("token", token);
-    console.log("description", data.description);
-    console.log("id", item.id);
-    console.log(event.target.elements.VictorVarela.name);
-    console.log(event.target);
     Api.patch(
       `/groups/${item.id}/`,
       {

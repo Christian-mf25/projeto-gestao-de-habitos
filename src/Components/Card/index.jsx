@@ -8,7 +8,7 @@ import { ContainerEditGroupCard, DivCard } from "./style";
 const Card = ({ item }) => {
   const [actived, setActived] = useState(false);
 
-  const myClickTeste = () => {
+  const handleClickEditCard = () => {
     setActived(true);
   };
   return (
@@ -19,7 +19,7 @@ const Card = ({ item }) => {
         setActived={setActived}
         item={item}
       />
-      <DivCard onClick={() => myClickTeste()}>
+      <DivCard onClick={() => handleClickEditCard()}>
         <>
           <div key={item.id}>
             <Group group={item} />
