@@ -1,4 +1,4 @@
-.popup {
+.editPopup {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,22 +10,20 @@
   align-items: center;
 }
 
-.popup-inner {
+.editPoup-inner {
   position: relative;
   padding: 32px;
   width: 100%;
   max-width: 640px;
   background-color: #4e116a;
+  color: #fff;
 }
 
-.popup-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.cancel-btn {
-  height: 25px;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: transparent;
-  border: none;
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: 0;
+  background: transparent;
+  color: #fff;
 }
