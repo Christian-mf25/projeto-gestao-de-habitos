@@ -1,12 +1,17 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { TextField, Button } from "@material-ui/core";
+import { Form, Container, DivColor, IMG } from "./style";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
+import logo from "../../assets/images/logo-select1-negativa.png";
 import * as yup from "yup";
-
-import { PrimaryButton } from "../Styled/style";
+import {
+  PrimaryButton,
+  SecondaryButton,
+  Section,
+  Input,
+} from "../Styled/style";
 
 const LoginForm = () => {
   const history = useHistory();
@@ -47,59 +52,54 @@ const LoginForm = () => {
   };
 
   return (
-    <section>
+    <Section>
+      <DivColor>
+        <IMG src={logo} alt={logo} />
 
-			<div ></div>
-      <form onSubmit={handleSubmit(handleForm)}>
-        <div>
-          <TextField
-            label="Username"
-            color="secondary"
-            size="small"
-            variant="outlined"
-            margin="dense"
-            {...register("username")}
-            error={!!errors.username}
-            helperText={errors.username?.message}
-          />
-        </div>
+        <Container>
+          <Form onSubmit={handleSubmit(handleForm)}>
+            <div>
+              <Input
+                label="Username"
+                size="small"
+                variant="outlined"
+                margin="dense"
+                {...register("username")}
+                error={!!errors.username}
+                helperText={errors.username?.message}
+              />
+            </div>
 
-        <div>
-          <TextField
-            type="password"
-            label="Password"
-            color="secondary"
-            size="small"
-            variant="outlined"
-            margin="dense"
-            {...register("password")}
-            error={!!errors.password}
-            helperText={errors.password?.message}
-          />
-        </div>
-        <p>forgot password?</p>
+            <div>
+              <Input
+                type="password"
+                label="Password"
+                size="small"
+                variant="outlined"
+                margin="dense"
+                {...register("password")}
+                error={!!errors.password}
+                helperText={errors.password?.message}
+              />
+            </div>
+            <p className="forgot-password">forgot password?</p>
 
-        <PrimaryButton
-          type="submit"
-          variant="contained"
-          size="medium"
-          
-        >
-          Login
-        </PrimaryButton>
-      </form>
+            <PrimaryButton type="submit" variant="contained" size="medium">
+              Login
+            </PrimaryButton>
+            <p>don't have an account?</p>
 
-      <p>don't have an account?</p>
-
-      <Button
-        variant="contained"
-        size="medium"
-        style={{ backgroundColor: "#363153", color: "#9593a4" }}
-        onClick={() => sendTo("/register")}
-      >
-        Register
-      </Button>
-    </section>
+            <SecondaryButton
+              variant="contained"
+              size="medium"
+              onClick={() => sendTo("/register")}
+            >
+              Register
+            </SecondaryButton>
+          </Form>
+        </Container>
+      </DivColor>
+    </Section>
   );
 };
 
