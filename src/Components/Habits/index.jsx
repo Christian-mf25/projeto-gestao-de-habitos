@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
+import EditHabit from "../EditHabit";
+import { HabitsContainer } from "./styles";
 
 const Habits = ({ getHabits, habitsRes }) => {
   const achieved = habitsRes.filter((item) => item.achieved === true);
   const notAchieved = habitsRes.filter((item) => item.achieved === false);
+  const [isEditing, setIsEditing] = useState(false);
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
   const checkIn = (item) => {
@@ -42,16 +46,23 @@ const Habits = ({ getHabits, habitsRes }) => {
   };
 
   return (
-    <div>
+    <HabitsContainer>
       <p>Atuais:</p>
-      {notAchieved.map((item) => (
-        <div key={item.id}>
-          <p>Nome: {item.title}</p>
-          <p>Categoria: {item.category}</p>
-          <p>Frequencia: {item.frequency}</p>
+
+      {/* {notAchieved.map((item) => (
+        <div className="divHabit" key={item.id}>
+          <EditHabit
+            item={item}
+            setIsEditing={setIsEditing}
+            trigger={isEditing}
+          />
+          <button
+            className="editButton"
+            onClick={() => setIsEditing(true)}
+          ></button>
+          <p>{item.title}</p>
+          <p>Frequency: {item.frequency}</p>
           <p>Alcançado: {item.how_much_achieved}</p>
-          <button onClick={() => checkIn(item)}>Check-in</button>
-          <button onClick={() => deleteHabit(item.id)}>Deletar</button>
         </div>
       ))}
       <p>Concluídos</p>
@@ -61,8 +72,8 @@ const Habits = ({ getHabits, habitsRes }) => {
           <p>Categoria:{item.category}</p>
           <p>Frequencia: {item.frequency}</p>
         </div>
-      ))}
-    </div>
+      ))} */}
+    </HabitsContainer>
   );
 };
 

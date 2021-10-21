@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Toolbar = styled.header`
-  background-color: var(--color-black-background);
+  /* background-color: var(--color-black-background); */
   display: flex;
   flex-direction: column;
   align-items: center;

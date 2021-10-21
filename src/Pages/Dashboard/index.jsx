@@ -10,6 +10,8 @@ import { toast } from "react-toastify";
 import SearchHabit from "../../Components/SearchHabit";
 import { Redirect } from "react-router";
 import Header from "../../Components/Header";
+import { Button, TextField } from "@material-ui/core";
+import { HabitsPage } from "./styles";
 
 const Dashboard = () => {
   const [habitsRes, setHabitsRes] = useState([]);
@@ -71,23 +73,33 @@ const Dashboard = () => {
     getHabits();
   }, []);
   return (
-    <div>
+    <HabitsPage>
       {token ? (
-        <div>
+        <div className="divHabits">
           <Header showD />
+          <button
+            className="addHabitButton"
+            onClick={() => setButtonPopup(!buttonPopup)}
+          >
+            Adicionar hábito
+          </button>
           <SearchHabit
             getHabits={getHabits}
             habitsRes={habitsRes}
             setIsSearching={setIsSearching}
           />
-          Dashboard
-          <button onClick={() => setButtonPopup(!buttonPopup)}>
-            Adicionar hábito
-          </button>
           <AddHabit trigger={buttonPopup} setTrigger={setButtonPopup}>
             <form onSubmit={handleSubmit(submitForm)}>
-              {errors?.title?.message}
-              <input placeholder="Titulo" {...register("title")} />
+              <TextField
+                label="Title"
+                margin="normal"
+                variant="outlined"
+                size="small"
+                color="primary"
+                {...register("title")}
+                error={!!errors.title}
+                helperText={errors.title?.message}
+              />
               <label for="category">Categoria</label>
               <select id="category" name="category" {...register("category")}>
                 <option value="saude">Saúde</option>
@@ -119,7 +131,9 @@ const Dashboard = () => {
                 <option value="bi_weekly">Uma vez a cada duas semanas</option>
                 <option value="monthly">Uma vez ao mês</option>
               </select>
-              <button type="submit">Adicionar</button>
+              <Button type="submit" variant="contained" color="primary">
+                Adicionar
+              </Button>
             </form>
           </AddHabit>
           {!isSearching && (
@@ -129,7 +143,7 @@ const Dashboard = () => {
       ) : (
         <Redirect to="/login" />
       )}
-    </div>
+    </HabitsPage>
   );
 };
 

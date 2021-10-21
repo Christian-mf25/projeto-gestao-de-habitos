@@ -1,15 +1,15 @@
-import { filter } from "dom-helpers";
+import { TextField } from "@material-ui/core";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
+import CardHabit from "../CardHabit";
 
 const SearchHabit = ({ habitsRes, setIsSearching, getHabits }) => {
   const [userInput, setUserInput] = useState("");
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
   const checkIn = (item) => {
-    if (item.how_much_achieved < 50) {
+    if (item.how_much_achieved < 30) {
       item.how_much_achieved += 1;
     } else {
       item.achieved = true;
@@ -46,10 +46,14 @@ const SearchHabit = ({ habitsRes, setIsSearching, getHabits }) => {
   return (
     <div>
       <form>
-        <input
+        <TextField
+          label="Search"
+          margin="normal"
+          variant="outlined"
+          size="small"
+          color="primary"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Search"
         />
       </form>
       <ul>
@@ -72,7 +76,11 @@ const SearchHabit = ({ habitsRes, setIsSearching, getHabits }) => {
                   </button>
                 </li>
               )))
-          : setIsSearching(false)}
+          : habitsRes?.map((item, index) => (
+              <div key={index}>
+                <CardHabit item={item} />
+              </div>
+            ))}
       </ul>
     </div>
   );
