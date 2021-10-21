@@ -60,4 +60,5 @@ export const IMG = styled.img`
   height: 123px;
 
   margin-bottom: 50px;
+	cursor: pointer;
 `;
