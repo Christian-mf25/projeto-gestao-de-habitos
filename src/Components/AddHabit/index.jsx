@@ -48,7 +48,7 @@ const AddHabit = (props) => {
       (_) => (
         // eslint-disable-next-line no-sequences
         toast.success("Hábito adicionado com sucesso!"),
-        props.setButtonPopup(!props.buttonPopup),
+        props.setTrigger(!props.trigger),
         update()
       )
     );

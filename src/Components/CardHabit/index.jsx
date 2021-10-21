@@ -3,7 +3,7 @@ import { EditHabitsCard } from "../EditHabitsCard";
 import { Background, DivCard, Container, Progress } from "./style";
 
 // COMPONENTE PARA RENDERIZAR CADA CARD DOS HABITS / GROUPS / SEARCH-GROUPS
-const CardHabit = ({ item }) => {
+const CardHabit = ({ item, setButtonPopup }) => {
   const [actived, setActived] = useState(false);
 
   const myClickTeste = () => {

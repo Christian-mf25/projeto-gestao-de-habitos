@@ -39,12 +39,12 @@ const SearchHabit = ({
               )
               .map((filter, index) => (
                 <div key={index}>
-                  <CardHabit item={filter} />
+                  <CardHabit item={filter} setButtonPopup={setButtonPopup} />
                 </div>
               )))
           : habitsRes?.map((item, index) => (
               <div key={index}>
-                <CardHabit item={item} />
+                <CardHabit item={item} setButtonPopup={setButtonPopup} />
               </div>
             ))}
       </ul>
