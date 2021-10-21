@@ -1,5 +1,4 @@
 import Api from "../../Services/API";
-import "./style.css";
 import { ContainerEditGroup, DivNameGroup } from "./style";
 
 import { ParagraphCloseModalGroup } from "./style";

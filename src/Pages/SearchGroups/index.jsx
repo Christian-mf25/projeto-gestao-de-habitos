@@ -26,7 +26,6 @@ const SearchGroups = () => {
   return (
     <>
       <Header showS />
-
       <C.DivColorApp>
         <input
           value={input}
