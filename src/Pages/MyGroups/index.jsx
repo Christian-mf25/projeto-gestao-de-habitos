@@ -10,7 +10,6 @@ import Card from "../../Components/Card/";
 import { Input, Section, SecondaryButton } from "../../Components/Styled/style";
 
 const Groups = () => {
-  // const [active, setActive] = useState(false);
   const history = useHistory();
 
   const { group, setGroup } = useContext(GroupContext);
