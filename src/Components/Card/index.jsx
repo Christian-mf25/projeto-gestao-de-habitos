@@ -11,15 +11,19 @@ const Card = ({ item }) => {
   const myClickTeste = () => {
     setActived(true);
   };
-  console.log("item", item);
   return (
     <>
-      <EditGroupCard actived={actived} setActived={setActived} item={item} />
+      <EditGroupCard
+        key={item.id}
+        actived={actived}
+        setActived={setActived}
+        item={item}
+      />
       <DivCard onClick={() => myClickTeste()}>
         <>
-          <li key={item.id}>
+          <div key={item.id}>
             <Group group={item} />
-          </li>
+          </div>
         </>
       </DivCard>
     </>

@@ -9,6 +9,7 @@ import Api from "../../Services/API";
 import Header from "../../Components/Header";
 import { EditGroupCard } from "../../Components/EditGroup";
 import Card from "../../Components/Card/";
+import "./style.css";
 
 const Groups = () => {
   const history = useHistory();
@@ -20,46 +21,49 @@ const Groups = () => {
 
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
-  useEffect(() => {
+  const handleClickInsertModal = () => {
+    setInsertModal(!insertModal);
     Api.get("/groups/", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => setGroup(response.data))
       .catch((err) => console.log(err));
-  }, [insertModal]);
-
-  const handleClickInsertModal = () => setInsertModal(!insertModal);
-  const handleClickCloseModal = () => setInsertModal(false);
+  };
+  const handleClickCloseModal = () => {
+    setInsertModal(false);
+    Api.get("/groups/", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => setGroup(response.data))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <C.Container>
       <Header />
       {token ? (
         <div>
-          
-          <button onClick={handleClickInsertModal}>Criar grupo</button>
           <input
             value={input}
             placeholder="Search Group"
             onChange={(e) => setInput(e.target.value)}
           ></input>
-          <ul>
+          <button onClick={handleClickInsertModal}>Criar grupo</button>
+          <ul className="box_list_groups">
             {input.length > 0
               ? data
                   .filter((result) =>
                     result.name.toLowerCase().includes(input.toLowerCase())
                   )
                   .map((filter, index) => (
-                    <li key={index}>
-                      <h3>{filter.name}</h3>
-                      <p>{filter.description}</p>
-                      <span>{filter.category}</span>
+                    <li className="list_groups" key={index}>
+                      <Card item={filter} />
                     </li>
                   ))
               : data?.map((item, index) => (
-                  <div key={index}>
+                  <li className="list_groups" key={index}>
                     <Card item={item} />
-                  </div>
+                  </li>
                 ))}
           </ul>
           <div>
