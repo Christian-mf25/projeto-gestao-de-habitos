@@ -1,16 +1,17 @@
+import logo from "../../assets/images/logo-select1-negativa.png";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Form, Container, DivColor, IMG } from "./style";
+import { Form, Container, DivColor } from "./style";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
-import logo from "../../assets/images/logo-select1-negativa.png";
 import * as yup from "yup";
 import {
   PrimaryButton,
   SecondaryButton,
   Section,
   Input,
+	IMG
 } from "../Styled/style";
 
 const LoginForm = () => {
