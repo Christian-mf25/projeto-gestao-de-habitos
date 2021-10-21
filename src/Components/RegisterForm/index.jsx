@@ -1,14 +1,17 @@
+import logo from "../../assets/images/logo-select1-negativa.png";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { TextField, Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
 import * as yup from "yup";
+import { Section, Input, PrimaryButton, IMG } from "../Styled/style";
+import { DivColor, Container, Form } from "./style";
 
 const RegisterForm = () => {
   const history = useHistory();
-	const token = JSON.parse(localStorage.getItem("@Productive:token"));
+  const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
   const sendTo = (path) => {
     history.push(path);
@@ -57,86 +60,82 @@ const RegisterForm = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit(handleForm)}>
-        <div>
-          <TextField
-            label="Username"
-            color="secondary"
-            size="small"
-            variant="outlined"
-            margin="dense"
-            {...register("username")}
-            error={!!errors.username}
-            helperText={errors.username?.message}
-          />
-        </div>
+    <Section>
+      <DivColor>
 
-        <div>
-          <TextField
-            label="Email"
-            color="secondary"
-            size="small"
-            variant="outlined"
-            margin="dense"
-            {...register("email")}
-            error={!!errors.email}
-            helperText={errors.email?.message}
-          />
-        </div>
+				<IMG src={logo} alt={logo} />
+        <Container>
+          <Form onSubmit={handleSubmit(handleForm)}>
+            <div>
+              <Input
+                label="Username"
+                color="primary"
+                size="small"
+                variant="outlined"
+                margin="dense"
+                {...register("username")}
+                error={!!errors.username}
+                helperText={errors.username?.message}
+              />
+            </div>
 
-        <div>
-          <TextField
-            type="password"
-            label="Password"
-            color="secondary"
-            size="small"
-            variant="outlined"
-            margin="dense"
-            {...register("password")}
-            error={!!errors.password}
-            helperText={errors.password?.message}
-          />
-        </div>
+            <div>
+              <Input
+                color="primary"
+                label="Email"
+                size="small"
+                variant="outlined"
+                margin="dense"
+                {...register("email")}
+                error={!!errors.email}
+                helperText={errors.email?.message}
+              />
+            </div>
 
-        <div>
-          <TextField
-            type="password"
-            label="Confirm password"
-            color="secondary"
-            size="small"
-            variant="outlined"
-            margin="dense"
-            {...register("confirm_password")}
-            error={!!errors.confirm_password}
-            helperText={errors.confirm_password?.message}
-          />
-        </div>
+            <div>
+              <Input
+                type="password"
+                label="Password"
+                size="small"
+                variant="outlined"
+                margin="dense"
+                {...register("password")}
+                error={!!errors.password}
+                helperText={errors.password?.message}
+              />
+            </div>
 
-        <Button
-          type="submit"
-          variant="contained"
-          size="medium"
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg, #A40FF2, #6D95FB, #0BD6F7)",
-          }}
-        >
-          Register
-        </Button>
-      </form>
+            <div>
+              <Input
+                type="password"
+                label="Confirm password"
+                size="small"
+                variant="outlined"
+                margin="dense"
+                {...register("confirm_password")}
+                error={!!errors.confirm_password}
+                helperText={errors.confirm_password?.message}
+              />
+            </div>
 
-      <p>Already has an account?</p>
+            <PrimaryButton type="submit" variant="contained" size="medium">
+              Register
+            </PrimaryButton>
+						
+            <p>Already has an account?</p>
 
-      <Button
-        variant="contained"
-        size="medium"
-        style={{ backgroundColor: "#363153", color: "#9593a4" }}
-        onClick={() => sendTo("/login")}
-      >
-        Login
-      </Button>
-    </>
+            <Button
+              variant="contained"
+              size="medium"
+              style={{ backgroundColor: "#363153", color: "#9593a4" }}
+              onClick={() => sendTo("/login")}
+            >
+              Login
+            </Button>
+          </Form>
+        </Container>
+      </DivColor>
+    </Section>
   );
 };
 
