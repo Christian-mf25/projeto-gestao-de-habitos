@@ -15,7 +15,7 @@ const SearchGroups = () => {
   const { groups } = useContext(GroupsContext);
   const { data } = useContext(GroupContext);
   const [input, setInput] = useState("");
-  const token = JSON.parse(localStorage.getItem("@Productive:token")) || [];
+  const token = JSON.parse(localStorage.getItem("@Productive:token")) || "";
 
   const subscribe = (id) => {
     Api.post(`/groups/${id}/subscribe/`, id, {
@@ -28,7 +28,7 @@ const SearchGroups = () => {
   };
   return (
     <>
-      {!token ? (
+      {token ? (
         <div>
           <Header showS />
           <SectionFlex>
