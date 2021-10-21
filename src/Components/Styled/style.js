@@ -7,8 +7,9 @@ export const Section = styled.section`
   background-position: center;
   background-size: cover;
 
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
 `;
 
 export const PrimaryButton = styled(Button)`

@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const Toolbar = styled.header`
-  /* background-color: var(--color-black-background); */
+  width: 100%;
+  background-color: rgba(24, 24, 24, 0.8);
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 10px;
 
   img {
     margin: 1rem;

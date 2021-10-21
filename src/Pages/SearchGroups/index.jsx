@@ -104,6 +104,7 @@ const SearchGroups = () => {
                 ))}
         </ul>
       </SectionFlex>
+
     </>
   );
 };

@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 export const EditHabitsCard = ({ setEdit, id, actived, item, setActived }) => {
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(1);
 
   const checkIn = (item) => {
     if (item.how_much_achieved < 50) {
@@ -46,7 +46,7 @@ export const EditHabitsCard = ({ setEdit, id, actived, item, setActived }) => {
   };
 
   const handleRefresh = () => {
-    setValue({});
+    setValue(value + 1);
   };
 
   return (
@@ -55,15 +55,23 @@ export const EditHabitsCard = ({ setEdit, id, actived, item, setActived }) => {
         <ContainerEditGroup>
           <DivNameGroup>
             {item.title}
-            <ParagraphCloseModalGroup onClick={() => setActived(false)}>
+            <ParagraphCloseModalGroup
+              onClick={() => {
+                handleRefresh();
+                setActived(false);
+              }}
+            >
               X
             </ParagraphCloseModalGroup>
           </DivNameGroup>
-          <br />
-          <div>
+          <div className="info">
             <p>Category: {item.category}</p>
-            <p>Meta: 30</p>
-            <p>Atual: {item.how_much_achieved}</p>
+            <div className="goal">
+              <p>Meta: 30</p>
+              <p>Atual: {item.how_much_achieved}</p>
+            </div>
+          </div>
+          <div className="btn-div">
             <button
               onClick={() => checkIn(item)}
               className="check-in"
