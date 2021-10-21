@@ -47,6 +47,7 @@ export const Toolbar = styled.header`
     right: 0;
     color: var(--color-title);
 		font-size: 30px;
+		cursor: pointer;
     span {
       width: 55px;
       height: 4px;

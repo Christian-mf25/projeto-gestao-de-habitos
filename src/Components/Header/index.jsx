@@ -1,17 +1,21 @@
 import logoSelectNegativa from "../../assets/images/logo-select1-negativa.png";
 import { Toolbar } from "./styles";
 import { useHistory } from "react-router-dom";
-import { SecondaryButton } from "../Styled/style";
 import {BiLogOut} from "react-icons/bi"
 
 const Header = ({ showD = false, showM = false, showS = false }) => {
   const history = useHistory();
 
+	const LogOut = () =>{
+		localStorage.clear()
+		history.push("/login")
+	}
+
   return (
     <Toolbar>
       <div className="top_header">
-        <img src={logoSelectNegativa} alt="logo-negativa" />
-        <BiLogOut className="logout"/>
+        <img src={logoSelectNegativa} alt="logo-negativa" onClick={() => history.push("/")} />
+        <BiLogOut onClick={LogOut} className="logout"/>
       </div>
 
       <div className="div_button">
