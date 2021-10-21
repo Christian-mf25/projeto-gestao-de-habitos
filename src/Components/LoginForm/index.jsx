@@ -1,12 +1,28 @@
+import logo from "../../assets/images/logo-select1-negativa.png";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Form, Container, DivColor } from "./style";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
 import * as yup from "yup";
+import {
+  PrimaryButton,
+  SecondaryButton,
+  Section,
+  Input,
+	IMG
+} from "../Styled/style";
 
 const LoginForm = () => {
   const history = useHistory();
+  const token = JSON.parse(localStorage.getItem("@Productive:token"));
+
+  const sendTo = (path) => {
+    history.push(path);
+  };
+
+  token && sendTo("/dashboard");
 
   const schema = yup.object().shape({
     username: yup
@@ -22,10 +38,6 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const sendToRegister = () => {
-    history.push("/register");
-  };
-
   const handleForm = (data) => {
     Api.post("/sessions/", data)
       .then((response) => {
@@ -35,31 +47,60 @@ const LoginForm = () => {
           "@Productive:token",
           JSON.stringify(response.data.access)
         );
-        history.push("/dashboard");
+        sendTo("/dashboard");
       })
-      .catch((_) => toast.error("Invalid email or password "));
+      .catch((_) => toast.error("Invalid email or password"));
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit(handleForm)}>
-        <div>
-          <input type="text" placeholder="Username" {...register("username")} />
-          <p>{errors.username?.message}</p>
-        </div>
+    <Section>
+      <DivColor>
+        <IMG src={logo} alt={logo} />
 
-        <div>
-          <input type="text" placeholder="Password" {...register("password")} />
-          <p>{errors.password?.message}</p>
-        </div>
+        <Container>
+          <Form onSubmit={handleSubmit(handleForm)}>
+            <div>
+              <Input
+                label="Username"
+                size="small"
+                variant="outlined"
+                margin="dense"
+                {...register("username")}
+                error={!!errors.username}
+                helperText={errors.username?.message}
+              />
+            </div>
 
-        <button type="submit">Login</button>
-      </form>
+            <div>
+              <Input
+                type="password"
+                label="Password"
+                size="small"
+                variant="outlined"
+                margin="dense"
+                {...register("password")}
+                error={!!errors.password}
+                helperText={errors.password?.message}
+              />
+            </div>
+            <p className="forgot-password">forgot password?</p>
 
-      <p>don't have an account?</p>
+            <PrimaryButton type="submit" variant="contained" size="medium">
+              Login
+            </PrimaryButton>
+            <p>don't have an account?</p>
 
-      <button onClick={sendToRegister}>Register</button>
-    </section>
+            <SecondaryButton
+              variant="contained"
+              size="medium"
+              onClick={() => sendTo("/register")}
+            >
+              Register
+            </SecondaryButton>
+          </Form>
+        </Container>
+      </DivColor>
+    </Section>
   );
 };
 

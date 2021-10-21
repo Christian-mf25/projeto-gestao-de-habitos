@@ -22,11 +22,11 @@ const Group = ({ group }) => {
   return (
     <C.Container>
       <h3>{group.name}</h3>
-      <p>Description: {group.description}</p>
+      <p>Desc: {group.description}</p>
       <p>{group.category}</p>
 
-      <button onClick={deleteGroup}>Deletar</button>
-      <button>Editar grupo</button>
+      {/* <button onClick={deleteGroup}>Deletar</button>
+      <button>Editar grupo</button> */}
     </C.Container>
   );
 };
