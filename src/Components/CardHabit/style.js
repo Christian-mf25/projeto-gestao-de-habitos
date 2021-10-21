@@ -99,11 +99,6 @@ export const Background = styled(BaseBox)`
 `;
 
 export const Progress = styled(BaseBox)`
-  background-image: linear-gradient(
-    to right,
-    #a40ff2 0%,
-    #6d95fb 51%,
-    #0bd6f7 100%
-  );
+  background-image: var(--color-linear);
   width: ${({ percent }) => (percent * 100) / 30}%;
 `;

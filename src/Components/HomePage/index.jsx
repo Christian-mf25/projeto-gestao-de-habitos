@@ -44,7 +44,7 @@ const HomePage = () => {
         <FirstSection>
           <PresentationContainer>
             <h1>Construa bons hábitos que mudarão sua vida</h1>
-            <p>
+            <p className="textOpacity">
               Comece uma conta agora mesmo, é <b>gratuito</b>
             </p>
             <div>
@@ -84,32 +84,32 @@ const HomePage = () => {
             <div>
               <img src={christian} alt="christian" />
               <h4>Christian Ferreira</h4>
-							<p>Tech Leader</p>
+              <p>Tech Leader</p>
             </div>
             <div>
               <img src={julio} alt="julio" />
               <h4>Julio Marodin</h4>
-							<p>Product Owner</p>
+              <p>Product Owner</p>
             </div>
             <div>
               <img src={maria} alt="maria" />
               <h4>Fernanda Baia</h4>
-							<p>Quality Assurance</p>
+              <p>Quality Assurance</p>
             </div>
             <div>
               <img src={tulio} alt="tulio" />
               <h4>Tulio Goulart</h4>
-							<p>Quality Assurance</p>
+              <p>Quality Assurance</p>
             </div>
             <div>
               <img src={victor} alt="victor" />
               <h4>Victor Varela</h4>
-							<p>Scrum Master</p>
+              <p>Scrum Master</p>
             </div>
           </section>
-					<section className="copy">
-						<p>Desenvolvido por &copy; Productive+</p>
-					</section>
+          <section className="copy">
+            <p>Desenvolvido por &copy; Productive+</p>
+          </section>
         </Footer>
       </HomeContainer>
     </Container>

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { GroupContext } from "../../Providers/Group";
 import { useHistory } from "react-router-dom";
 import { Dialog } from "@material-ui/core";
@@ -7,7 +7,7 @@ import NewGroup from "../../Components/NewGroup";
 import Api from "../../Services/API";
 import Header from "../../Components/Header";
 import Card from "../../Components/Card/";
-import { Input, Section, SecondaryButton } from "../../Components/Styled/style";
+import { Input, SecondaryButton } from "../../Components/Styled/style";
 
 const Groups = () => {
   const history = useHistory();
@@ -21,19 +21,9 @@ const Groups = () => {
 
   const handleClickInsertModal = () => {
     setInsertModal(!insertModal);
-    Api.get("/groups/", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => setGroup(response.data))
-      .catch((err) => console.log(err));
   };
   const handleClickCloseModal = () => {
     setInsertModal(false);
-    Api.get("/groups/", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => setGroup(response.data))
-      .catch((err) => console.log(err));
   };
 
   return (
@@ -45,6 +35,7 @@ const Groups = () => {
             <div className="ul-li">
               <C.HeadSearchAndCreateGroup>
                 <Input
+                  label="Search Group"
                   value={input}
                   size="small"
                   variant="outlined"
@@ -60,6 +51,7 @@ const Groups = () => {
                   Create Group
                 </SecondaryButton>
               </C.HeadSearchAndCreateGroup>
+
               <ul className="box_list_groups">
                 {input.length > 0
                   ? data

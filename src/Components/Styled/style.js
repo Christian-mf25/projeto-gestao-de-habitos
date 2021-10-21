@@ -14,7 +14,7 @@ export const Section = styled.section`
 
 export const PrimaryButton = styled(Button)`
   &.MuiButton-root {
-    background-image: linear-gradient(90deg, #a40ff2, #6d95fb, #0bd6f7);
+    background-image: var(--color-linear);
     color: var(--color-text-primary);
   }
 `;
