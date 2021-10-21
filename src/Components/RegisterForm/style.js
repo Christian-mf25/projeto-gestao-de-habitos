@@ -22,30 +22,25 @@ export const Container = styled.div`
 
   background-color: #261d2a;
 
-  height: 50vh;
+  height: 60vh;
   width: 90vw;
   max-width: 400px;
 
   border-radius: 10px;
+
+  color: var(--color-text-primary);
+	text-align: center;
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: center;
-
-  .forgot-password {
-    text-align: right;
-    color: var(--color-text-primary);
-		margin: 7px 0 10px 0;
-		font-size: 0.8rem;
-  }
-
-  p { 
-		margin: 15px 0;
-		font-size: 0.9rem;
-    text-align: center;
-    color: var(--color-text-primary);
-  }
+  justify-content: space-around;
+	
+	height: 90%;
+	
+	button{
+		margin: 12px 0;
+	}
 `;
