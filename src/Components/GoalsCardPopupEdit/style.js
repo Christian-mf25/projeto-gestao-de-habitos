@@ -7,6 +7,7 @@ export const ContainerEditGoal = styled.div`
   border-radius: 5px;
   background-color: var(--color-purple-card);
   box-sizing: border-box;
+  z-index: 5;
 
    h5 {
       margin-bottom: 10px;

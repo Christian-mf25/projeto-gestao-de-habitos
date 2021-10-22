@@ -16,7 +16,7 @@ const GoalsCardPopupEdit = ({
     <div className="popup_Goal">
       <ContainerEditGoal className="containerEditHabit">
         <DivNameGroup>
-          Adicionar Meta
+          Editar Meta
           <ParagraphCloseModalGroup onClick={() => setActived(false)}>
             X
           </ParagraphCloseModalGroup>
