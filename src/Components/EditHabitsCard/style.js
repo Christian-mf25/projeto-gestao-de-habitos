@@ -1,7 +1,19 @@
-import { TextField } from "@material-ui/core";
 import styled from "styled-components";
 
 export const ContainerEditGroup = styled.div`
+  .editGroupTrue {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+  }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -14,19 +26,6 @@ export const ContainerEditGroup = styled.div`
   .editGroupFalse {
     display: none;
   }
-  .editGroupTrue {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    left: 0;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
   .check-in {
     background-image: linear-gradient(to right, #a40ff2, #6d95fb, #0bd6f7);
     border: none;

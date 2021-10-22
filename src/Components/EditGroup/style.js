@@ -28,6 +28,7 @@ export const ParagraphCloseModalGroup = styled.p`
   width: 30px;
   margin: 0;
   text-align: center;
+  cursor: pointer;
 `;
 
 export const TextFieldDescriptionGroup = styled(TextField)({
@@ -49,11 +50,30 @@ export const TextFieldDescriptionGroup = styled(TextField)({
 
 export const SecondaryButton = styled(Button)`
   &.MuiButton-root {
+    background-image: none;
     background-color: #363153;
     color: var(--color-text-primary);
-    float: right;
+    /* float: right;
     top: -44px;
-    left: -60px;
+    left: -60px; */
+    padding: 10px 25px;
+    border-radius: 5px;
+    position: relative;
+    left: 115px;
+    :hover {
+      background-color: #363153;
+      filter: brightness(0.9);
+    }
+  }
+`;
+
+export const PrimaryButton = styled(Button)`
+  &.MuiButton-root {
+    background-image: var(--color-linear);
+    color: var(--color-text-primary);
+    /* float: right;
+    top: -44px;
+    left: -60px; */
     padding: 10px 25px;
     border-radius: 5px;
 

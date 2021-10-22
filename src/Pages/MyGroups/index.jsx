@@ -40,7 +40,6 @@ const Groups = () => {
                   size="small"
                   variant="outlined"
                   margin="dense"
-                  placeholder="Search Group"
                   onChange={(e) => setInput(e.target.value)}
                 />
                 <SecondaryButton

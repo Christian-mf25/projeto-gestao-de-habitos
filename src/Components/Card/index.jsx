@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router";
 import { EditGroupCard } from "../EditGroup";
 import Group from "../Group";
 import { ContainerEditGroupCard, DivCard } from "./style";
@@ -6,22 +7,26 @@ import { ContainerEditGroupCard, DivCard } from "./style";
 // COMPONENTE PARA RENDERIZAR CADA CARD DOS HABITS / GROUPS / SEARCH-GROUPS
 const Card = ({ item }) => {
   const [actived, setActived] = useState(false);
+  const history = useHistory();
 
-  const handleClickEditCard = () => {
-    setActived(true);
+  const handleSendToGroupPage = (id) => {
+    history.push(`/group/${id}`);
   };
   return (
     <ContainerEditGroupCard>
-      <EditGroupCard
-        key={item.id}
-        actived={actived}
-        setActived={setActived}
-        item={item}
-      />
-      <DivCard onClick={() => handleClickEditCard()}>
+      {actived && (
+        <EditGroupCard
+          setActived={setActived}
+          key={item.id}
+          actived={actived}
+          item={item}
+        />
+      )}
+      <button className="buttonX" onClick={() => setActived(true)}></button>
+      <DivCard onClick={() => handleSendToGroupPage(item.id)}>
         <>
           <div key={item.id}>
-            <Group group={item} />
+            <Group group={item} actived={actived} />
           </div>
         </>
       </DivCard>

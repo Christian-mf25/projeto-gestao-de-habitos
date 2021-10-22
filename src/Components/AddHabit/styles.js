@@ -10,9 +10,9 @@ export const Container = styled.div`
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   z-index: 1;
-	overflow: auto;
+  overflow: auto;
 
   .popup-inner {
     position: relative;
