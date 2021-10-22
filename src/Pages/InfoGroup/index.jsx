@@ -9,12 +9,12 @@ const InfoGroup = () => {
   return (
     <>
       <Header showD />
-      <NewGoal />
+
       <Goals />
 
       {/* <CardActivity> */}
-        <NewActivity />
-        <Activities />
+      <NewActivity />
+      <Activities />
       {/* </CardActivity> */}
     </>
   );

@@ -1,0 +1,18 @@
+.section_Goals {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.section_internalGoals {
+  background-color: var(--color-purple-card);
+  color: var(--color-text-primary);
+  width: 90%;
+  max-width: 330px;
+  border-radius: 5px;
+}
+.section_internalHeaderGoals {
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}

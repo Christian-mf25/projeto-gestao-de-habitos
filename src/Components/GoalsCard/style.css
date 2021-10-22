@@ -1,0 +1,16 @@
+.card_Goal {
+  padding: 21px 20px;
+  border-bottom: 1px solid black;
+}
+.card_Goal:last-child {
+  border-bottom: none;
+}
+
+.card_GoalHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card_GoalHead h3 {
+  margin: 0;
+}

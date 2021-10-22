@@ -28,6 +28,7 @@ export const ParagraphCloseModalGroup = styled.p`
   width: 30px;
   margin: 0;
   text-align: center;
+  cursor: pointer;
 `;
 
 export const TextFieldDescriptionGroup = styled(TextField)({
