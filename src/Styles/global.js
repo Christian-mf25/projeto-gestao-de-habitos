@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
         --color-title: #f5f5f5;
         --color-text: #a788b5;
 				--color-background: rgba(24, 24, 24, 0.3);
+        --color-linear: linear-gradient(90.82deg, #6D95FB 0.01%, #A40FF2 99.99%, #0BD6F7 100%);
     }
     body, p, li, ul {
       	list-style: none;  

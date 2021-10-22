@@ -1,4 +1,3 @@
-import { TextField } from "@material-ui/core";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -27,7 +26,6 @@ export const DivColorApp = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: var(--color-background); */
   box-sizing: border-box;
   height: 100%;
   min-height: 100vh;
@@ -35,13 +33,23 @@ export const DivColorApp = styled.div`
 `;
 
 export const HeadSearchAndCreateGroup = styled.div`
-  width: 365px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 0;
   height: 100px;
+
+	.css-4mzek5-MuiFormControl-root-MuiTextField-root{
+		width: 90%;
+		margin: 0 auto;
+	}
+
+	button{
+		width: 90%;
+		margin: 0 auto;
+	}
 
   @media screen and (min-width: 768px) {
     width: 400px;

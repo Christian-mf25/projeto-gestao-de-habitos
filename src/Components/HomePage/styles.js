@@ -95,6 +95,7 @@ export const PresentationContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  grid-gap: 1rem;
 
   h1,
   p {
@@ -104,6 +105,15 @@ export const PresentationContainer = styled.div`
 
   p {
     padding-bottom: 10px;
+    color: #828282;
+  }
+
+  .textOpacity {
+    color: rgba(255,255,255,0.5);
+  }
+
+  .textOpacity b {
+      color: white;
   }
 
   h1 {

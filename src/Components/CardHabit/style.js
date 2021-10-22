@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import img from "../../assets/images/config.png";
-import add from "../../assets/images/hospital-category.png";
 
 export const DivCard = styled.div`
   display: flex;
   height: 180px;
-  width: 265px;
+  width: 330px;
   margin: 20px auto;
   background-color: var(--color-purple-card);
   border-radius: 5px;
@@ -17,16 +16,6 @@ export const DivCard = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 10px;
-  }
-
-  .add {
-    background-image: url(${add});
-    background-repeat: no-repeat;
-    background-size: 90% 90%;
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    border: none;
   }
 
   .title {
@@ -54,17 +43,44 @@ export const DivCard = styled.div`
   }
 
   li {
-    list-style: none;
+    background-color: var(--color-purple-card);
+    height: 143px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0;
+
+    section {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      justify-content: space-around;
+			margin-bottom: 5px;
+			height: 100%;
+    }
 
     h3 {
       padding-left: 10px;
       width: 175px;
+			margin: 3px 0;
     }
 
     p {
       min-width: 150px;
+    }
+
+    span {
+      padding: 5px;
+      margin: 17px 15px 0 15px;
+      border-radius: 5px;
+      font-size: 3rem;
+      color: #7580f9;
+      background-color: #8183e72b;
+
+      display: flex;
     }
   }
 
@@ -99,11 +115,6 @@ export const Background = styled(BaseBox)`
 `;
 
 export const Progress = styled(BaseBox)`
-  background-image: linear-gradient(
-    to right,
-    #a40ff2 0%,
-    #6d95fb 51%,
-    #0bd6f7 100%
-  );
+  background-image: var(--color-linear);
   width: ${({ percent }) => (percent * 100) / 30}%;
 `;

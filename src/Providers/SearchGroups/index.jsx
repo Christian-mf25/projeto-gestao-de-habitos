@@ -9,8 +9,10 @@ export const GroupsProvider = ({ children }) => {
     Api.get("groups/")
       .then((response) => setGroups(response.data.results))
       .catch((err) => console.log(err));
-  });
+  }, []);
   return (
-    <GroupsContext.Provider value={{ groups }}>{children}</GroupsContext.Provider>
+    <GroupsContext.Provider value={{ groups }}>
+      {children}
+    </GroupsContext.Provider>
   );
 };

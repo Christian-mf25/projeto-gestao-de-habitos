@@ -2,13 +2,12 @@ import { useState } from "react";
 import { EditGroupCard } from "../EditGroup";
 import Group from "../Group";
 import { ContainerEditGroupCard, DivCard } from "./style";
-// import "./style.css";
 
 // COMPONENTE PARA RENDERIZAR CADA CARD DOS HABITS / GROUPS / SEARCH-GROUPS
 const Card = ({ item }) => {
   const [actived, setActived] = useState(false);
 
-  const myClickTeste = () => {
+  const handleClickEditCard = () => {
     setActived(true);
   };
   return (
@@ -19,7 +18,7 @@ const Card = ({ item }) => {
         setActived={setActived}
         item={item}
       />
-      <DivCard onClick={() => myClickTeste()}>
+      <DivCard onClick={() => handleClickEditCard()}>
         <>
           <div key={item.id}>
             <Group group={item} />
