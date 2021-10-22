@@ -22,9 +22,9 @@ export const Toolbar = styled.header`
   }
 
   .div_button {
-    width: 100%;
+    width: 90%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
 
   .button_span {
