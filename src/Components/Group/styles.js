@@ -11,10 +11,9 @@ export const Container = styled.div`
   }
 
   p {
-    font-size: 12px
+    font-size: 12px;
   }
 `;
-
 
 export const ContainerInfoCard = styled.div`
   display: flex;
@@ -22,4 +21,14 @@ export const ContainerInfoCard = styled.div`
   div {
     width: 100%;
   }
-`
+
+  div .groupHeader {
+    display: flex;
+    /* justify-content: space-between; */
+  }
+
+  .buttonX {
+    float: right;
+    z-index: 2;
+  }
+`;

@@ -58,14 +58,14 @@ export const DivCard = styled.div`
       flex-wrap: nowrap;
       align-items: flex-start;
       justify-content: space-around;
-			margin-bottom: 5px;
-			height: 100%;
+      margin-bottom: 5px;
+      height: 100%;
     }
 
     h3 {
       padding-left: 10px;
       width: 175px;
-			margin: 3px 0;
+      margin: 3px 0;
     }
 
     p {

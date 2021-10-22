@@ -18,7 +18,6 @@ import { ParagraphCloseModalGroup } from "./style";
 
 export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
-
   const schema = yup.object().shape({
     name: yup.string(),
     description: yup.string(),
@@ -32,6 +31,8 @@ export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const patchGroup = (data, event) => {
+    console.log(data);
+    console.log(item.id);
     Api.patch(
       `/groups/${item.id}/`,
       {
@@ -99,16 +100,10 @@ export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
                 />
                 {/* <button type="submit">Salvar</button> */}
                 <div className="area_buttons">
-                  <PrimaryButton type="submit" name="VictorVarela">
-                    Salvar
-                  </PrimaryButton>
+                  <PrimaryButton type="submit">Salvar</PrimaryButton>
                 </div>
               </form>
-              <SecondaryButton
-                name="AnnaLuiza"
-                type="submit"
-                onClick={() => deleteGroup()}
-              >
+              <SecondaryButton type="submit" onClick={() => deleteGroup()}>
                 Excluir Grupo
               </SecondaryButton>
             </div>

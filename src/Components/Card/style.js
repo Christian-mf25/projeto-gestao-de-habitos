@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import buttonImg from "../../assets/images/config.png";
 
 export const DivCard = styled.div`
   height: 150px;
@@ -17,5 +18,28 @@ export const DivCard = styled.div`
 export const ContainerEditGroupCard = styled.div`
   .hidden {
     display: none;
+  }
+
+  button {
+    background-image: url(${buttonImg});
+    background-repeat: no-repeat;
+    background-size: 90% 90%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 20%;
+    margin-top: 20px;
+    background-color: transparent;
+    border: none;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  @media (min-width: 768px) {
+    button {
+      right: 38%;
+    }
   }
 `;
