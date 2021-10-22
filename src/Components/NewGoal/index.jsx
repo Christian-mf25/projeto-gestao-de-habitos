@@ -5,6 +5,8 @@ import Api from "../../Services/API";
 import { toast } from "react-toastify";
 import {useParams} from "react-router-dom";
 import {useState} from "react";
+import './style.css'
+
 
 const NewGoal = () => {
     const [buttonPopup, setButtonPopup] = useState(false);
@@ -45,25 +47,38 @@ const NewGoal = () => {
         });
     };
 
+    console.log(buttonPopup)
+
   return (
     <>
       <div>
         {buttonPopup ?
-        <form onSubmit={handleSubmit(submitFunction)}>
-          {errors?.title?.message}
-          <input placeholder="Titulo" {...register("title")} />
-          <label for="difficulty">Dificuldade</label>
-              <select
-                id="difficulty"
-                name="difficulty"
-                {...register("difficulty")}
-              >
-                <option value="fácil">Fácil</option>
-                <option value="médio">Médio</option>
-                <option value="difícil">Difícil</option>
-              </select>
-          <button type="submit">Criar</button>
-        </form>
+        <div className='containerPopupCreateGoals'>
+          <div>
+            <div>
+              Adicionar Meta
+              <p >
+                X
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit(submitFunction)}>
+              {errors?.title?.message}
+              <input placeholder="Titulo" {...register("title")} />
+              <label for="difficulty">Dificuldade</label>
+                  <select
+                    id="difficulty"
+                    name="difficulty"
+                    {...register("difficulty")}
+                  >
+                    <option value="fácil">Fácil</option>
+                    <option value="médio">Médio</option>
+                    <option value="difícil">Difícil</option>
+                  </select>
+              <button type="submit">Criar</button>
+            </form>
+          </div>
+        </div>
         : <button onClick={() => setButtonPopup(!buttonPopup)}>
             Adicionar Meta
         </button>
