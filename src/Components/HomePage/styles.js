@@ -109,11 +109,11 @@ export const PresentationContainer = styled.div`
   }
 
   .textOpacity {
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
   }
 
   .textOpacity b {
-      color: white;
+    color: white;
   }
 
   h1 {
@@ -267,13 +267,15 @@ export const Footer = styled.footer`
     padding: 0 10px;
     display: flex;
     justify-content: center;
-		margin: 40px auto;
+    margin: 40px auto;
+    flex-wrap: wrap;
     div {
-      width: 20%;
+      width: 35%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      margin-bottom: 10px;
     }
     p {
       text-align: center;
@@ -281,15 +283,16 @@ export const Footer = styled.footer`
 
     h4 {
       margin-bottom: 5px;
+      text-align: center;
     }
   }
 
   section.copy {
     padding-top: 20px;
-		padding-bottom: 20px;
-		margin: 0;
-		background-color: var(--color-purple-card);
-		color: var(--color-text-primary);
+    padding-bottom: 20px;
+    margin: 0;
+    background-color: var(--color-purple-card);
+    color: var(--color-text-primary);
   }
 
   img {
@@ -297,9 +300,21 @@ export const Footer = styled.footer`
     border-radius: 50%;
   }
 
+  .julio {
+    margin-bottom: 10px;
+  }
+
   @media screen and (min-width: 768px) {
     img {
       width: 100px;
+    }
+
+    .julio {
+      margin-bottom: 0;
+    }
+
+    section {
+      flex-wrap: nowrap;
     }
   }
 `;
