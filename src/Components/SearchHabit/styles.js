@@ -6,7 +6,7 @@ export const SearchHabitsDiv = styled.div`
   align-items: center;
 
   form {
-    width: 265px;
+    width: 100%;
     div {
       width: 100%;
       label {
@@ -15,8 +15,8 @@ export const SearchHabitsDiv = styled.div`
     }
   }
 
-  .addHabitButton {
-    max-width: 265px;
+  button {
+		width: 100%;
   }
 
   ul {
