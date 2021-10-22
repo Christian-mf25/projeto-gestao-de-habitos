@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { Div } from "./style";
-import { Input, PrimaryButton } from "../Styled/style";
+import { Input, PrimaryButton, SecondaryButton } from "../Styled/style";
 import { IoAddSharp } from "react-icons/io5";
 
 const NewActivity = () => {
@@ -62,9 +62,14 @@ const NewActivity = () => {
               size="small"
               {...register("realization_time")}
             />
-            <PrimaryButton size="small" type="submit">
-              Criar
-            </PrimaryButton>
+            <div className="atv-btn">
+              <PrimaryButton size="small" type="submit">
+                Criar
+              </PrimaryButton>
+              <SecondaryButton onClick={() => setButtonPopup(!buttonPopup)}>
+                Cancelar
+              </SecondaryButton>
+            </div>
           </form>
         ) : (
           <IoAddSharp onClick={() => setButtonPopup(!buttonPopup)} />

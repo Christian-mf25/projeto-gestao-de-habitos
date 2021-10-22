@@ -11,6 +11,11 @@ export const SectionFlex = styled.section`
 
   margin: 0 auto;
 
+  ul {
+    width: 100%;
+    max-width: 436.5px;
+  }
+
   .css-4mzek5-MuiFormControl-root-MuiTextField-root {
     width: 100%;
     max-width: 436.5px;
@@ -26,6 +31,7 @@ export const Li = styled.li`
   align-items: flex-start;
   justify-content: flex-start;
   margin: 18px 0;
+  border-radius: 5px;
 
   div {
     display: flex;

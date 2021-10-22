@@ -12,7 +12,7 @@ import {
   ContainedGroup,
   SecondaryButton,
 } from "./style";
-import { PrimaryButton } from "../../Components/Styled/style";
+import { PrimaryButton } from "./style";
 
 import { ParagraphCloseModalGroup } from "./style";
 
@@ -101,11 +101,11 @@ export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
                 {/* <button type="submit">Salvar</button> */}
                 <div className="area_buttons">
                   <PrimaryButton type="submit">Salvar</PrimaryButton>
+                  <SecondaryButton type="submit" onClick={() => deleteGroup()}>
+                    Excluir
+                  </SecondaryButton>
                 </div>
               </form>
-              <SecondaryButton type="submit" onClick={() => deleteGroup()}>
-                Excluir Grupo
-              </SecondaryButton>
             </div>
           </ContainedGroup>
         </ContainerEditGroup>

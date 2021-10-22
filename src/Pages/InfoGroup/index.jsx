@@ -4,12 +4,13 @@ import Activities from "../../Components/Activities";
 import NewActivity from "../../Components/NewActivity";
 import Header from "../../Components/Header";
 import { CardActivity } from "./style";
+import { Card } from "@material-ui/core";
 
 const InfoGroup = () => {
   return (
     <>
-      <Header showD />
-      <NewGoal />
+      <Header showM />
+
       <Goals />
 
       <CardActivity>

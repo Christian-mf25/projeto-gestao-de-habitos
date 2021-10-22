@@ -6,8 +6,11 @@ export const Ul = styled.ul`
   flex-wrap: nowrap;
   align-items: flex-start;
   color: var(--color-title);
-
   width: 100%;
+
+  .bRrcmr.MuiTextField-root {
+    width: 95%;
+  }
 
   .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
     margin: 0 auto;
@@ -28,12 +31,11 @@ export const Ul = styled.ul`
     border-top: solid 1px var(--color-text);
     width: 100%;
     height: 120px;
-		position: relative;
+    position: relative;
 
-		button{
-			margin: 0 30px;
-
-		}
+    button {
+      margin: 0 30px;
+    }
 
     div {
       svg {

@@ -31,11 +31,12 @@ export const DivCard = styled.div`
   .gear {
     background-image: url(${img});
     background-repeat: no-repeat;
-    background-size: 90% 90%;
+    background-size: 100% 100%;
     width: 20px;
     height: 20px;
     background-color: transparent;
     border: none;
+    cursor: pointer;
   }
 
   .dificulty {

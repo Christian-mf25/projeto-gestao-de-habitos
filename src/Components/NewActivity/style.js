@@ -4,6 +4,7 @@ export const Div = styled.div`
   position: relative;
 
   form {
+    margin: 20px 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -31,8 +32,18 @@ export const Div = styled.div`
     font-size: 30px;
     color: var(--color-text);
     position: absolute;
-    right: 5px;
+    right: 17px;
     top: 9px;
     cursor: pointer;
+  }
+
+  .atv-btn {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    button {
+      width: 50%;
+      margin: 10px 20px;
+    }
   }
 `;
