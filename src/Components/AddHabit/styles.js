@@ -10,8 +10,9 @@ export const Container = styled.div`
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   z-index: 1;
+  overflow: auto;
 
   .popup-inner {
     position: relative;
@@ -28,9 +29,21 @@ export const Container = styled.div`
     border-bottom: 1px solid var(--color-text);
   }
 
+  .radioOptions {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 1rem;
+  }
+
   form {
-    padding-left: 32px;
-    padding-bottom: 32px;
+    padding: 30px 15px;
+
+    .toggle {
+      display: flex;
+      flex-direction: column;
+      grid-gap: 1rem;
+      align-items: flex-start;
+    }
   }
 
   h3 {

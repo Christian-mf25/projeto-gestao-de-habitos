@@ -13,13 +13,12 @@
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
-.area_buttons {
-  width: 100%;
-}
 .area_buttons > button {
   margin-right: 20px;
   padding: 10px 25px;
   margin-top: 40px;
+  background-size: 100% 100%;
 }

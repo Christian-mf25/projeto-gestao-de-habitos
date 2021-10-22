@@ -41,15 +41,13 @@ export const HeadSearchAndCreateGroup = styled.div`
   padding: 20px 0;
   height: 100px;
 
-	.css-4mzek5-MuiFormControl-root-MuiTextField-root{
-		width: 90%;
-		margin: 0 auto;
-	}
+  .css-4mzek5-MuiFormControl-root-MuiTextField-root {
+    width: 100%;
+  }
 
-	button{
-		width: 90%;
-		margin: 0 auto;
-	}
+  button {
+    width: 100%;
+  }
 
   @media screen and (min-width: 768px) {
     width: 400px;

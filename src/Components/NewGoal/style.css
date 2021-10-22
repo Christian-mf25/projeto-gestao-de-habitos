@@ -1,0 +1,58 @@
+.container_modalAdicionarMeta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container_modalAdicionarMeta > button {
+  width: 90%;
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+.container_modalAdicionarMeta svg {
+  font-size: 30px;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.container_PopupCreateGoals {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+.container_PopupCreateGoals-Form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.form_PopupCreateGoals {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1.5rem;
+  justify-content: center;
+  width: 90%;
+}
+
+.container_PopupCreateGoals-Form button {
+  width: auto !important;
+  margin-right: 20px;
+  padding: 5px 15px;
+}
+
+.form_PopupCreateGoals > .MuiFormControl-root {
+  margin-top: 25px;
+}
+
+.form_PopupCreateGoals select {
+  width: 40%;
+}

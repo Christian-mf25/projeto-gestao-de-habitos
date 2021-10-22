@@ -86,7 +86,7 @@ const AddHabit = (props) => {
           />
           <div className="radioOptions">
             <div className="toggle">
-              <p>Categoria</p>
+              <h3>Categoria</h3>
               <div>
                 <input
                   {...register("category")}
@@ -134,7 +134,7 @@ const AddHabit = (props) => {
               </div>
             </div>
             <div className="toggle">
-              <p>Dificuldade</p>
+              <h3>Dificuldade</h3>
               <div>
                 <input
                   {...register("difficulty")}
@@ -182,7 +182,7 @@ const AddHabit = (props) => {
               </div>
             </div>
             <div className="toggle">
-              <p>Com qual frequência?</p>
+              <h3>Com qual frequência?</h3>
               <div>
                 <input
                   {...register("frequency")}

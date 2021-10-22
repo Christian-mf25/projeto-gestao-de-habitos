@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CardHabit from "../CardHabit";
 import { SearchHabitsDiv } from "./styles";
-import { Input } from "../../Components/Styled/style";
+import { Input, SecondaryButton } from "../../Components/Styled/style";
 
 const SearchHabit = ({
   habitsRes,
@@ -24,12 +24,14 @@ const SearchHabit = ({
           onChange={(e) => setUserInput(e.target.value)}
         />
       </form>
-      <button
-        className="addHabitButton"
+
+      <SecondaryButton
+        variant="contained"
+        size="medium"
         onClick={() => setButtonPopup(!buttonPopup)}
       >
         Adicionar hábito
-      </button>
+      </SecondaryButton>
       <ul>
         {userInput.length > 0
           ? (setIsSearching(true),

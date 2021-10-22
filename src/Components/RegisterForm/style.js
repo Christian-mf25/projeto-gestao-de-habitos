@@ -14,33 +14,54 @@ export const DivColor = styled.div`
 `;
 
 export const Container = styled.div`
-  display: flex;
+    display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
 
   background-color: #261d2a;
-
-  height: 60vh;
-  width: 90vw;
-  max-width: 400px;
-
+  
+  width: 80%;
+  
   border-radius: 10px;
-
+  padding: 20px;
+  
   color: var(--color-text-primary);
-	text-align: center;
-`;
+
+  @media (min-width: 426px){
+    width: 50%;
+  }
+
+  @media (min-width: 769px){
+    width: 330px;
+  }
+  `;
 
 export const Form = styled.form`
-  display: flex;
+display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: space-around;
-	
-	height: 90%;
-	
-	button{
-		margin: 12px 0;
-	}
+  justify-content: center;
+  width: 100%;
+  grid-gap: 0.7rem;
+
+  .forgot-password {
+    text-align: right;
+    color: var(--color-text-primary);
+		margin: 7px 0 10px 0;
+		font-size: 0.8rem;
+  }
+
+  p { 
+		margin: 15px 0;
+		font-size: 0.9rem;
+    text-align: center;
+    color: var(--color-text-primary);
+  }
+
+  div.MuiFormControl-root {
+    width: 100%;
+    margin: 0;
+  }
 `;
