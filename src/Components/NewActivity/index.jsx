@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { Div } from "./style";
+import { Input, PrimaryButton } from "../Styled/style";
+import { IoAddSharp } from "react-icons/io5";
 
 const NewActivity = () => {
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -52,18 +54,20 @@ const NewActivity = () => {
         {buttonPopup ? (
           <form onSubmit={handleSubmit(submitFunction)}>
             {errors?.title?.message}
-            <input placeholder="Titulo" {...register("title")} />
-            <input
+            <Input label="Titulo" size="small" {...register("title")} />
+            <Input
+              className="data"
               type="datetime-local"
               placeholder="Tempo de Realização"
+              size="small"
               {...register("realization_time")}
             />
-            <button type="submit">Criar</button>
+            <PrimaryButton size="small" type="submit">
+              Criar
+            </PrimaryButton>
           </form>
         ) : (
-          <button onClick={() => setButtonPopup(!buttonPopup)}>
-            Adicionar Atividade
-          </button>
+          <IoAddSharp onClick={() => setButtonPopup(!buttonPopup)} />
         )}
       </Div>
     </>

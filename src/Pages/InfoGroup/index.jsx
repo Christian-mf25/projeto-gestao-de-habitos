@@ -12,10 +12,10 @@ const InfoGroup = () => {
 
       <Goals />
 
-      {/* <CardActivity> */}
-      <NewActivity />
-      <Activities />
-      {/* </CardActivity> */}
+      <CardActivity>
+        <NewActivity />
+        <Activities />
+      </CardActivity>
     </>
   );
 };
