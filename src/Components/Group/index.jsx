@@ -1,10 +1,12 @@
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
 import * as C from "./styles";
+import { GiHealthNormal, GiMeditation } from "react-icons/gi";
+import { FaBrain, FaGamepad } from "react-icons/fa";
+import { HiTemplate } from "react-icons/hi";
 
 const Group = ({ group, actived }) => {
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
-  // const [actived, setActived] = useState(false);
 
   const deleteGroup = () => {
     Api.delete(`groups/${group.id}/unsubscribe/`, {
@@ -23,7 +25,20 @@ const Group = ({ group, actived }) => {
   return (
     <C.Container>
       <C.ContainerInfoCard>
-        <div>
+        <span>
+          {group.category === "Saúde" ? (
+            <GiHealthNormal />
+          ) : group.category === "Educação" ? (
+            <FaBrain />
+          ) : group.category === "Meditação" ? (
+            <GiMeditation />
+          ) : group.category === "Lazer" ? (
+            <FaGamepad />
+          ) : (
+            <HiTemplate />
+          )}
+        </span>
+        <div className="info">
           <div className="groupHeader">
             <h3>{group.name}</h3>
           </div>
@@ -35,10 +50,6 @@ const Group = ({ group, actived }) => {
         </div>
       </C.ContainerInfoCard>
       <br />
-      <p>{group.category}</p>
-
-      {/* <button onClick={deleteGroup}>Deletar</button>
-      <button>Editar grupo</button> */}
     </C.Container>
   );
 };
