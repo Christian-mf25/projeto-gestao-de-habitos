@@ -1,6 +1,6 @@
 .card_Goal {
   padding: 21px 20px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--color-text);
 }
 .card_Goal:last-child {
   border-bottom: none;
