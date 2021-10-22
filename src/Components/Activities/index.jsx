@@ -3,8 +3,9 @@ import Api from "../../Services/API";
 import { useParams } from "react-router-dom";
 import EditActivity from "../EditActivity";
 import { toast } from "react-toastify";
-import { Input } from "../Styled/style";
+import { Input, PrimaryButton } from "../Styled/style";
 import { Ul } from "./style";
+import { FaTrashAlt } from "react-icons/fa";
 
 const Activities = () => {
   const { id } = useParams();
@@ -34,9 +35,10 @@ const Activities = () => {
       <h3>Activities</h3>
       <Input
         value={input}
-        placeholder="Search a Activity"
+				size="small"
+        label="Search a Activity"
         onChange={(e) => setInput(e.target.value)}
-      ></Input>
+      />
       {input.length > 0
         ? activities
             .filter((item) =>
@@ -46,32 +48,32 @@ const Activities = () => {
               <li key={activity.id}>
                 <h3>{activity.title}</h3>
                 <p>{activity.realization_time}</p>
-                {update ? (
-                  <EditActivity activity={activity} setUpdate={setUpdate} />
-                ) : (
-                  <button onClick={() => setUpdate(!update)}>
-                    Editar Atividade
-                  </button>
-                )}
-                <button onClick={() => deleteActivity(activity.id)}>
-                  Deletar
-                </button>
+                <div>
+                  {update ? (
+                    <EditActivity activity={activity} setUpdate={setUpdate} />
+                  ) : (
+                    <PrimaryButton size="small" onClick={() => setUpdate(!update)}>
+                      Editar Atividade
+                    </PrimaryButton>
+                  )}
+                  <FaTrashAlt onClick={() => deleteActivity(activity.id)} />
+                </div>
               </li>
             ))
         : activities.map((activity) => (
             <li key={activity.id}>
               <h3>{activity.title}</h3>
               <p>{activity.realization_time}</p>
-              {update === activity.id ? (
-                <EditActivity activity={activity} setUpdate={setUpdate} />
-              ) : (
-                <button onClick={() => setUpdate(activity.id)}>
-                  Editar Atividade
-                </button>
-              )}
-              <button onClick={() => deleteActivity(activity.id)}>
-                Deletar
-              </button>
+              <div>
+                {update === activity.id ? (
+                  <EditActivity activity={activity} setUpdate={setUpdate} />
+                ) : (
+                  <PrimaryButton onClick={() => setUpdate(activity.id)}>
+                    Editar Atividade
+                  </PrimaryButton>
+                )}
+                <FaTrashAlt onClick={() => deleteActivity(activity.id)} />
+              </div>
             </li>
           ))}
     </Ul>
