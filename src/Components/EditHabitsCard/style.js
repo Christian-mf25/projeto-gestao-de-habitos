@@ -11,7 +11,7 @@ export const ContainerEditGroup = styled.div`
   border-radius: 5px;
   background-color: var(--color-purple-card);
 
-  .editGroupFalse {
+  /* .editGroupFalse {
     display: none;
   }
   .editGroupTrue {
@@ -25,7 +25,8 @@ export const ContainerEditGroup = styled.div`
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-  }
+		z-index: 5;
+  } */
 
   .check-in {
     background-image: linear-gradient(to right, #a40ff2, #6d95fb, #0bd6f7);
