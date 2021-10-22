@@ -23,6 +23,7 @@ export const SecondaryButton = styled(Button)`
   &.MuiButton-root {
     background-color: #363153;
     color: var(--color-text-primary);
+    width: 100%;
 
     :hover {
       background-color: #363153;
@@ -45,6 +46,7 @@ export const TertiaryButton = styled(Button)`
 
 export const Input = styled(TextField)`
   &.MuiTextField-root {
+    width: 100%;
     input {
       color: #fff;
     }

@@ -87,7 +87,7 @@ const HomePage = () => {
               <p>Tech Leader</p>
             </div>
             <div>
-              <img src={julio} alt="julio" />
+              <img className="julio" src={julio} alt="julio" />
               <h4>Julio Marodin</h4>
               <p>Product Owner</p>
             </div>

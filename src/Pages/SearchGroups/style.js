@@ -11,9 +11,14 @@ export const SectionFlex = styled.section`
 
   margin: 0 auto;
 
+  ul {
+    width: 100%;
+    max-width: 436.5px;
+  }
+
   .css-4mzek5-MuiFormControl-root-MuiTextField-root {
     width: 100%;
-		max-width: 403px;
+    max-width: 436.5px;
   }
 `;
 
@@ -25,7 +30,8 @@ export const Li = styled.li`
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: flex-start;
-	margin: 18px 0;
+  margin: 18px 0;
+  border-radius: 5px;
 
   div {
     display: flex;
@@ -57,17 +63,17 @@ export const Li = styled.li`
     display: flex;
   }
 
-	button{
-		border: 0;
-		padding: 0;
-		border: 0;
+  button {
+    border: 0;
+    padding: 0;
+    border: 0;
 
-		border-radius: 5px;
-		height: 19px;
+    border-radius: 5px;
+    height: 19px;
     width: 80px;
 
-		cursor: pointer;
-		background-image: linear-gradient(90deg, #a40ff2, #6d95fb, #0bd6f7);
+    cursor: pointer;
+    background-image: linear-gradient(90deg, #a40ff2, #6d95fb, #0bd6f7);
     color: var(--color-text-primary);
-	}
+  }
 `;

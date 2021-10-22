@@ -31,11 +31,12 @@ export const DivCard = styled.div`
   .gear {
     background-image: url(${img});
     background-repeat: no-repeat;
-    background-size: 90% 90%;
+    background-size: 100% 100%;
     width: 20px;
     height: 20px;
     background-color: transparent;
     border: none;
+    cursor: pointer;
   }
 
   .dificulty {
@@ -58,14 +59,14 @@ export const DivCard = styled.div`
       flex-wrap: nowrap;
       align-items: flex-start;
       justify-content: space-around;
-			margin-bottom: 5px;
-			height: 100%;
+      margin-bottom: 5px;
+      height: 100%;
     }
 
     h3 {
       padding-left: 10px;
       width: 175px;
-			margin: 3px 0;
+      margin: 3px 0;
     }
 
     p {
