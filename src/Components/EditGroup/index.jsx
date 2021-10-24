@@ -100,8 +100,14 @@ export const EditGroupCard = ({ setEdit, id, actived, item, setActived }) => {
                 />
                 {/* <button type="submit">Salvar</button> */}
                 <div className="area_buttons">
-                  <PrimaryButton type="submit">Salvar</PrimaryButton>
-                  <SecondaryButton type="submit" onClick={() => deleteGroup()}>
+                  <PrimaryButton className="btn_editCardGroup" type="submit">
+                    Salvar
+                  </PrimaryButton>
+                  <SecondaryButton
+                    className="btn_editCardGroup"
+                    type="submit"
+                    onClick={() => deleteGroup()}
+                  >
                     Excluir
                   </SecondaryButton>
                 </div>
