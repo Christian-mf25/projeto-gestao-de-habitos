@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { GroupContext } from "../../Providers/Group";
 import { useHistory } from "react-router-dom";
-import Group from "../../Components/Group";
 import { Dialog } from "@material-ui/core";
 import * as C from "./styles.js";
 import NewGroup from "../../Components/NewGroup";
 import Api from "../../Services/API";
 import Header from "../../Components/Header";
+import Card from "../../Components/Card/";
+import { Input, SecondaryButton } from "../../Components/Styled/style";
 
 const Groups = () => {
   const history = useHistory();
@@ -18,65 +19,73 @@ const Groups = () => {
 
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
 
-  useEffect(() => {
-    Api.get("/groups/", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => setGroup(response.data))
-      .catch((err) => console.log(err));
-  }, [insertModal]);
-
-  const handleClickInsertModal = () => setInsertModal(!insertModal);
-  const handleClickCloseModal = () => setInsertModal(false);
+  const handleClickInsertModal = () => {
+    setInsertModal(!insertModal);
+  };
+  const handleClickCloseModal = () => {
+    setInsertModal(false);
+  };
 
   return (
-    <C.Container>
-      <Header />
-      {token ? (
-        <div>
-          <button onClick={handleClickInsertModal}>Criar grupo</button>
-          <input
-            value={input}
-            placeholder="Search Group"
-            onChange={(e) => setInput(e.target.value)}
-          ></input>
-          <ul>
-            {input.length > 0
-              ? data
-                  .filter((result) =>
-                    result.name.toLowerCase().includes(input.toLowerCase())
-                  )
-                  .map((filter, index) => (
-                    <li key={index}>
-                      <h3>{filter.name}</h3>
-                      <p>{filter.description}</p>
-                      <span>{filter.category}</span>
-                    </li>
-                  ))
-              : data?.map((item, index) => (
-                  <div key={index}>
-                    <li key={item.id}>
-                      <Group group={item} />
-                    </li>
-                  </div>
-                ))}
-          </ul>
-          <div>
-            <Dialog
-              open={insertModal}
-              onClose={handleClickCloseModal}
-              aria-labelledby="responsive-dialog-title"
-            >
-              {insertModal && (
-                <NewGroup handleClickInsertModal={handleClickCloseModal} />
-              )}
-            </Dialog>
-          </div>
-        </div>
-      ) : (
-        history.push("/login")
-      )}
-    </C.Container>
+    <>
+      <Header showM />
+      <C.DivColorApp>
+        <C.Container>
+          {token ? (
+            <div className="ul-li">
+              <C.HeadSearchAndCreateGroup>
+                <Input
+                  label="Search Group"
+                  value={input}
+                  size="small"
+                  variant="outlined"
+                  margin="dense"
+                  onChange={(e) => setInput(e.target.value)}
+                />
+                <SecondaryButton
+                  variant="contained"
+                  size="medium"
+                  onClick={handleClickInsertModal}
+                >
+                  Create Group
+                </SecondaryButton>
+              </C.HeadSearchAndCreateGroup>
+
+              <ul className="box_list_groups">
+                {input.length > 0
+                  ? data
+                      .filter((result) =>
+                        result.name.toLowerCase().includes(input.toLowerCase())
+                      )
+                      .map((filter, index) => (
+                        <li className="list_groups" key={index}>
+                          <Card item={filter} />
+                        </li>
+                      ))
+                  : data?.map((item, index) => (
+                      <li className="list_groups" key={index}>
+                        <Card item={item} />
+                      </li>
+                    ))}
+              </ul>
+              <div>
+                <Dialog
+                  open={insertModal}
+                  onClose={handleClickCloseModal}
+                  aria-labelledby="responsive-dialog-title"
+                >
+                  {insertModal && (
+                    <NewGroup handleClickInsertModal={handleClickCloseModal} />
+                  )}
+                </Dialog>
+              </div>
+            </div>
+          ) : (
+            history.push("/login")
+          )}
+        </C.Container>
+      </C.DivColorApp>
+    </>
   );
 };
 

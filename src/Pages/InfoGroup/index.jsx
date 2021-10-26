@@ -1,8 +1,10 @@
 import Goals from "../../Components/Goals";
+import NewGoal from "../../Components/NewGoal";
 import Activities from "../../Components/Activities";
 import NewActivity from "../../Components/NewActivity";
 import Header from "../../Components/Header";
 import { CardActivity } from "./style";
+import { Card } from "@material-ui/core";
 import { useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import { GroupContext } from "../../Providers/Group";

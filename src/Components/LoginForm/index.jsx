@@ -1,10 +1,18 @@
+import logo from "../../assets/images/logo-select1-negativa.png";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { TextField, Button } from "@material-ui/core";
+import { Form, Container, DivColor } from "./style";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Api from "../../Services/API";
 import * as yup from "yup";
+import {
+  PrimaryButton,
+  SecondaryButton,
+  Section,
+  Input,
+  IMG,
+} from "../Styled/style";
 
 const LoginForm = () => {
   const history = useHistory();
@@ -41,63 +49,58 @@ const LoginForm = () => {
         );
         sendTo("/dashboard");
       })
-      .catch((_) => toast.error("Invalid email or password "));
+      .catch((_) => toast.error("Invalid email or password"));
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit(handleForm)}>
-        <div>
-          <TextField
-            label="Username"
-            color="secondary"
-            size="small"
-            variant="outlined"
-            margin="dense"
-            {...register("username")}
-            error={!!errors.username}
-            helperText={errors.username?.message}
-          />
-        </div>
+    <Section>
+      <DivColor>
+        <IMG src={logo} alt={logo} onClick={() => sendTo("/")} />
 
-        <div>
-          <TextField
-            type="password"
-            label="Password"
-            color="secondary"
-            size="small"
-            variant="outlined"
-            margin="dense"
-            {...register("password")}
-            error={!!errors.password}
-            helperText={errors.password?.message}
-          />
-        </div>
+        <Container>
+          <Form onSubmit={handleSubmit(handleForm)}>
+            <div>
+              <Input
+                label="Username"
+                size="small"
+                variant="outlined"
+                margin="dense"
+                {...register("username")}
+                error={!!errors.username}
+                helperText={errors.username?.message}
+              />
+            </div>
 
-        <Button
-          type="submit"
-          variant="contained"
-          size="medium"
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg, #A40FF2, #6D95FB, #0BD6F7)",
-          }}
-        >
-          Login
-        </Button>
-      </form>
+            <div>
+              <Input
+                type="password"
+                label="Password"
+                size="small"
+                variant="outlined"
+                margin="dense"
+                {...register("password")}
+                error={!!errors.password}
+                helperText={errors.password?.message}
+              />
+            </div>
+            <p className="forgot-password">forgot password?</p>
 
-      <p>don't have an account?</p>
+            <PrimaryButton type="submit" variant="contained" size="medium">
+              Login
+            </PrimaryButton>
+            <p>don't have an account?</p>
 
-      <Button
-        variant="contained"
-        size="medium"
-        style={{ backgroundColor: "#363153", color: "#9593a4" }}
-        onClick={() => sendTo("/register")}
-      >
-        Register
-      </Button>
-    </section>
+            <SecondaryButton
+              variant="contained"
+              size="medium"
+              onClick={() => sendTo("/register")}
+            >
+              Register
+            </SecondaryButton>
+          </Form>
+        </Container>
+      </DivColor>
+    </Section>
   );
 };
 
