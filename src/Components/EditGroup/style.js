@@ -53,9 +53,6 @@ export const SecondaryButton = styled(Button)`
     background-image: none;
     background-color: #363153;
     color: var(--color-text-primary);
-    /* float: right;
-    top: -44px;
-    left: -60px; */
     padding: 10px 25px;
     border-radius: 5px;
     position: relative;
@@ -71,9 +68,6 @@ export const PrimaryButton = styled(Button)`
   &.MuiButton-root {
     background-image: var(--color-linear);
     color: var(--color-text-primary);
-    /* float: right;
-    top: -44px;
-    left: -60px; */
     padding: 10px 25px;
     border-radius: 5px;
 
