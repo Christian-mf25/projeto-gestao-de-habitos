@@ -26,13 +26,13 @@ const Group = ({ group, actived }) => {
     <C.Container>
       <C.ContainerInfoCard>
         <span>
-          {group.category === "Saúde" ? (
+          {group.category === "saude" ? (
             <GiHealthNormal />
-          ) : group.category === "Educação" ? (
+          ) : group.category === "educacao" ? (
             <FaBrain />
-          ) : group.category === "Meditação" ? (
+          ) : group.category === "meditacao" ? (
             <GiMeditation />
-          ) : group.category === "Lazer" ? (
+          ) : group.category === "lazer" ? (
             <FaGamepad />
           ) : (
             <HiTemplate />
