@@ -10,7 +10,6 @@ const Header = ({ showD = false, showM = false, showS = false }) => {
   const history = useHistory();
   const { consultApi, setConsultApi } = useContext(GroupContext);
   const [userInfoPopup, setUserInfoPopup] = useState(false);
-  console.log(consultApi);
 
   const LogOut = () => {
     localStorage.clear();

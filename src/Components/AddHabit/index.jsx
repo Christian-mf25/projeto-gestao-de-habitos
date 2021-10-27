@@ -8,6 +8,7 @@ import jwtDecode from "jwt-decode";
 import { useState } from "react";
 import { Container, TertiaryButton } from "./styles";
 import { PrimaryButton, SecondaryButton } from "./styles";
+import { Input } from "../Styled/style";
 
 const AddHabit = (props) => {
   const [value, setValue] = useState();
@@ -74,8 +75,8 @@ const AddHabit = (props) => {
           </button>
         </div>
         <form className="radioContainer" onSubmit={handleSubmit(submitForm)}>
-          <TextField
-            label="Title"
+          <Input
+            label="Title New Habit"
             margin="normal"
             variant="outlined"
             size="small"

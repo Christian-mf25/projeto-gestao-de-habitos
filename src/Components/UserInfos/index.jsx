@@ -18,7 +18,6 @@ import { BiUserCircle } from "react-icons/bi";
 const UserInfos = ({ userInfoPopup, setUserInfoPopup }) => {
   const token = JSON.parse(localStorage.getItem("@Productive:token"));
   const userId = jwt_decode(token);
-  console.log(userInfoPopup);
 
   const [resultApiProfile, setResultApiProfile] = useState("");
 
@@ -37,7 +36,6 @@ const UserInfos = ({ userInfoPopup, setUserInfoPopup }) => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const updateUserProfile = (data) => {
-    console.log(data);
     Api.patch(
       `/users/${userId.user_id}/`,
       {
@@ -55,10 +53,8 @@ const UserInfos = ({ userInfoPopup, setUserInfoPopup }) => {
   };
 
   const closeUserInfoPopup = () => {
-    console.log("oi");
     setUserInfoPopup(!userInfoPopup);
   };
-  console.log(resultApiProfile);
 
   return (
     <div className="containerUserInfos">
