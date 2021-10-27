@@ -46,7 +46,7 @@ export const Toolbar = styled.header`
     width: 100%;
   }
 
-  .logout {
+  svg {
     padding: 10px 25px;
     color: var(--color-title);
     font-size: 30px;
@@ -60,15 +60,12 @@ export const Toolbar = styled.header`
 
   @media (min-width: 700px) {
     .top_header {
-      position: relative;
-      height: 20px;
+
     }
     img {
-      position: absolute;
-      left: 22px;
-      top: 20px;
+     
       width: 76px;
-      margin: 0;
+     
     }
 
     .div_button {
@@ -78,11 +75,8 @@ export const Toolbar = styled.header`
       font-size: 1.3rem;
     }
 
-		.logout {
-			position: absolute;
-      right: 13px;
-      top: 30px;
-			font-size: 40px;
+		svg {
+			font-size: 40px; 
 		}
   }
 `;
