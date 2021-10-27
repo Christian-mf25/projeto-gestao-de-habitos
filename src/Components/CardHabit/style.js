@@ -4,7 +4,7 @@ import img from "../../assets/images/config.png";
 export const DivCard = styled.div`
   display: flex;
   height: 180px;
-  width: 330px;
+  width: 100%;
   margin: 20px auto;
   background-color: var(--color-purple-card);
   border-radius: 5px;
@@ -12,7 +12,7 @@ export const DivCard = styled.div`
 
   .divContainer {
     margin: 0;
-    width: 100%;
+    
     display: flex;
     justify-content: space-between;
     padding: 10px;

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 90%;
   .card {
     margin-bottom: 10px;
     width: 380px;
     height: 152px;
+    
   }
 
   .ul-li {
@@ -30,7 +30,8 @@ export const DivColorApp = styled.div`
   box-sizing: border-box;
   height: 100%;
   min-height: 100vh;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
 `;
 
 export const HeadSearchAndCreateGroup = styled.div`
